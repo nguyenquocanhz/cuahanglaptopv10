@@ -15,7 +15,7 @@ namespace PMQuanLyCuaHangLapTopV10.Models
         public NhanVienDAO()
         {
             // Lấy chuỗi kết nối từ file cấu hình
-            connectionString = ConfigurationManager.ConnectionStrings["MyDBConnectionString"].ConnectionString;
+            connectionString = "Data Source=DESKTOP-PVG090N;Initial Catalog=laptopStoreDB;Integrated Security=True;Encrypt=false;TrustServerCertificate=True";
         }
 
         // Phương thức lấy danh sách nhân viên
@@ -25,7 +25,7 @@ namespace PMQuanLyCuaHangLapTopV10.Models
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT maNV, tenNV, diaChiNV, sdtNV, username, password, maQuyenHan FROM NhanVien";
+                string query = "SELECT maNV, tenNV, diaChiNV, sdtNV, username, password, quyenhan FROM NhanVien";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 connection.Open();
@@ -38,9 +38,9 @@ namespace PMQuanLyCuaHangLapTopV10.Models
                         TenNV = reader["tenNV"].ToString(),
                         DiaChiNV = reader["diaChiNV"].ToString(),
                         SdtNV = reader["sdtNV"].ToString(),
-                        Username = reader["username"].ToString(),
-                        Password = reader["password"].ToString(),
-                        MaQuyenHan = reader["maQuyenHan"].ToString()
+                        UsernameNV = reader["username"].ToString(),
+                        PasswordNV = reader["password"].ToString(),
+                        quyenHan = reader["quyenHan"].ToString()
                     };
                     nhanViens.Add(nv);
                 }
@@ -55,16 +55,16 @@ namespace PMQuanLyCuaHangLapTopV10.Models
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO NhanVien (maNV, tenNV, diaChiNV, sdtNV, username, password, maQuyenHan) " +
-                               "VALUES (@MaNV, @TenNV, @DiaChiNV, @SdtNV, @Username, @Password, @MaQuyenHan)";
+                string query = "INSERT INTO NhanVien (maNV, tenNV, diaChiNV, sdtNV, username, password, quyenhan) " +
+                               "VALUES (@MaNV, @TenNV, @DiaChiNV, @SdtNV, @Username, @Password, @quyenhan)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@MaNV", nhanVien.MaNV);
                 command.Parameters.AddWithValue("@TenNV", nhanVien.TenNV);
                 command.Parameters.AddWithValue("@DiaChiNV", nhanVien.DiaChiNV);
                 command.Parameters.AddWithValue("@SdtNV", nhanVien.SdtNV);
-                command.Parameters.AddWithValue("@Username", nhanVien.Username);
-                command.Parameters.AddWithValue("@Password", nhanVien.Password);
-                command.Parameters.AddWithValue("@MaQuyenHan", nhanVien.MaQuyenHan);
+                command.Parameters.AddWithValue("@Username", nhanVien.UsernameNV);
+                command.Parameters.AddWithValue("@Password", nhanVien.PasswordNV);
+                command.Parameters.AddWithValue("@quyenhan", nhanVien.quyenHan);
 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -77,16 +77,16 @@ namespace PMQuanLyCuaHangLapTopV10.Models
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "UPDATE NhanVien SET tenNV = @TenNV, diaChiNV = @DiaChiNV, sdtNV = @SdtNV, " +
-                               "username = @Username, password = @Password, maQuyenHan = @MaQuyenHan " +
+                               "username = @Username, password = @Password, quyenhan = @quyenhan " +
                                "WHERE maNV = @MaNV";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@MaNV", nhanVien.MaNV);
                 command.Parameters.AddWithValue("@TenNV", nhanVien.TenNV);
                 command.Parameters.AddWithValue("@DiaChiNV", nhanVien.DiaChiNV);
                 command.Parameters.AddWithValue("@SdtNV", nhanVien.SdtNV);
-                command.Parameters.AddWithValue("@Username", nhanVien.Username);
-                command.Parameters.AddWithValue("@Password", nhanVien.Password);
-                command.Parameters.AddWithValue("@MaQuyenHan", nhanVien.MaQuyenHan);
+                command.Parameters.AddWithValue("@Username", nhanVien.UsernameNV);
+                command.Parameters.AddWithValue("@Password", nhanVien.PasswordNV);
+                command.Parameters.AddWithValue("@quyenhan", nhanVien.quyenHan);
 
                 connection.Open();
                 command.ExecuteNonQuery();

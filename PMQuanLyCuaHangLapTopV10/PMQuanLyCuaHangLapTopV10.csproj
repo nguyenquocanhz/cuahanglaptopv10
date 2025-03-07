@@ -57,12 +57,22 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="DbHelpers.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InsertNhanVien.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Models\ListNV.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\NhanVienDAO.cs" />
     <Compile Include="Program.cs" />
@@ -72,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,9 +110,41 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\light_mode_icon.bmp" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Images\light_mode_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Images\settings_icon_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Images\dashboard_icon_small_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Images\products_icon_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Images\sales_icon_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Images\report_icon_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Images\customer_icon_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Images\inventory_icon_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Images\dark_mode_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Images\navbar_icon_dark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
