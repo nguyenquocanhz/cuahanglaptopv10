@@ -21,13 +21,13 @@ namespace PMQuanLyCuaHangLapTopV10.Models
 
             public NhanVien() { }
 
-            public NhanVien(string maNV, string tenNV, string diaChiNV, string sdtNV, string username, string password, string _quyenHan)
+            public NhanVien(string maNV, string tenNV, string diaChiNV, string sdtNV,string password, string _quyenHan)
             {
                 MaNV = maNV;
                 TenNV = tenNV;
                 DiaChiNV = diaChiNV;
                 SdtNV = sdtNV;
-                UsernameNV = username;
+                UsernameNV = sdtNV;
                 PasswordNV = password;
                 quyenHan = _quyenHan;
             }
