@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -54,6 +56,45 @@ namespace PMQuanLyCuaHangLapTopV10
                 // Không làm gì cả nếu người dùng chọn No (hủy đăng xuất)
                 // Người dùng vẫn ở lại ứng dụng và không đăng xuất
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnFeedback_Click(object sender, EventArgs e)
+        {
+            frmFeedback frmFeedback = new frmFeedback();
+            frmFeedback.Show();
+            this.Hide();
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnKhachHang_MouseHover(object sender, EventArgs e)
+        {
+            Thread.Sleep(100);
+        }
+
+        private void pnKhachHang_MouseLeave(object sender, EventArgs e)
+        {
+            Thread.Sleep(100);
+
+        }
+
+        private void btnOpenFormKH_Click(object sender, EventArgs e)
+        {
+            frmKhachHang frmKhachHang = new frmKhachHang();
+            frmKhachHang.ShowDialog();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

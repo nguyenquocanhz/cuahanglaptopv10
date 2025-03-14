@@ -5,14 +5,13 @@ namespace PMQuanLyCuaHangLapTopV10
 {
     class Logger
     {
-        private string logFilePath;
+        private string logFilePath = "debug.log";
         private static Logger instance; // Singleton instance
         private static readonly object lockObject = new object(); // Lock object for thread safety
 
         // Constructor (private for Singleton pattern)
-        private Logger(string filePath)
+        private Logger()
         {
-            logFilePath = filePath;
             // Optionally, create the log file if it doesn't exist:
             if (!File.Exists(logFilePath))
             {
@@ -38,7 +37,7 @@ namespace PMQuanLyCuaHangLapTopV10
                 {
                     if (instance == null)
                     {
-                        instance = new Logger(filePath);
+                        instance = new Logger();
                     }
                 }
             }

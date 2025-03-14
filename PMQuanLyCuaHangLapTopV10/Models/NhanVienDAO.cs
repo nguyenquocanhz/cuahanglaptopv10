@@ -74,6 +74,8 @@ namespace PMQuanLyCuaHangLapTopV10.Models
         // Phương thức cập nhật thông tin nhân viên
         public void UpdateNhanVien(NhanVien nhanVien)
         {
+
+            // tự động đóng ngắt connection với using
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "UPDATE NhanVien SET tenNV = @TenNV, diaChiNV = @DiaChiNV, sdtNV = @SdtNV, " +
