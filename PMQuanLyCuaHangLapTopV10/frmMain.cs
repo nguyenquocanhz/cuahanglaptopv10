@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PMQuanLyCuaHangLapTopV10.DatabaseHelpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +23,26 @@ namespace PMQuanLyCuaHangLapTopV10
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(SessionManager.Username))
+            {
+                label2.Text = "Xin chào : " + SessionManager.Username;
+                label3.Text = "Xin chào : " + SessionManager.Role;
 
+            }
+            else
+            {
+                label2.Text = "Xin chào : [Không có dữ liệu]";
+            }
+            if (SessionManager.Role != "admin")
+            {
+                Menu1.Visible = true;
+                Menu2.Visible = false;
+            }
+            else
+            {
+                Menu1.Visible = true;
+                Menu2.Visible = true;
+            }
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -95,6 +115,16 @@ namespace PMQuanLyCuaHangLapTopV10
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnLogout_Click_1(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

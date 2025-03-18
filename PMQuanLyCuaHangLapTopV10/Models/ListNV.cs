@@ -58,7 +58,7 @@ namespace PMQuanLyCuaHangLapTopV10.Models
             }
 
             listNV.Add(nhanVien);
-            logger.LogInformation($"Added NhanVien: {nhanVien.MaNV} - {nhanVien.TenNV}"); // Log success
+            logger.LogInformation($"Added NhanVien: {nhanVien.MaNV} - {nhanVien.HoTenNV}"); // Log success
 
         }
 
@@ -75,7 +75,7 @@ namespace PMQuanLyCuaHangLapTopV10.Models
             if (nhanVienToRemove != null)
             {
                 listNV.Remove(nhanVienToRemove);
-                logger.LogInformation($"Removed NhanVien: {maNV} - {nhanVienToRemove.TenNV}");
+                logger.LogInformation($"Removed NhanVien: {maNV} - {nhanVienToRemove.HoTenNV}");
                 return true; // Indicate successful removal
             }
             else
@@ -121,15 +121,14 @@ namespace PMQuanLyCuaHangLapTopV10.Models
             if (existingNhanVien != null)
             {
                 // Update the properties of the existing NhanVien
-                existingNhanVien.TenNV = updatedNhanVien.TenNV;
-                existingNhanVien.gioiTinh = updatedNhanVien.gioiTinh;
+                existingNhanVien.HoTenNV = updatedNhanVien.HoTenNV;
+                existingNhanVien.GioiTinh = updatedNhanVien.GioiTinh;
                 existingNhanVien.DiaChiNV = updatedNhanVien.DiaChiNV;
-                existingNhanVien.SdtNV = updatedNhanVien.SdtNV;
-                existingNhanVien.UsernameNV = updatedNhanVien.UsernameNV;
-                existingNhanVien.PasswordNV = updatedNhanVien.PasswordNV;
+                existingNhanVien.SoDienThoai = updatedNhanVien.SoDienThoai;
+                existingNhanVien.Password = updatedNhanVien.Password;
                 // ... update other properties as needed
 
-                logger.LogInformation($"Updated NhanVien: {updatedNhanVien.MaNV} - {updatedNhanVien.TenNV}");
+                logger.LogInformation($"Updated NhanVien: {updatedNhanVien.MaNV} - {updatedNhanVien.HoTenNV}");
                 return true; // Indicate successful update
             }
             else
@@ -139,44 +138,44 @@ namespace PMQuanLyCuaHangLapTopV10.Models
             }
         }
         // Method to check login credentials
-        public bool CheckDangNhap(string username, string password)
-        {
+        //public bool CheckDangNhap(string sdt, string password)
+        //{
 
-            if (string.IsNullOrEmpty(username))
-            {
-                logger.LogError("Username khong duoc phep de trong ! ");
-                return false;
-            }
+        //    if (string.IsNullOrEmpty(sdt))
+        //    {
+        //        logger.LogError("Username khong duoc phep de trong ! ");
+        //        return false;
+        //    }
 
-            if (string.IsNullOrEmpty(password))
-            {
-                logger.LogError("Attempted login with a null or empty password.");
-                return false;
-            }
+        //    if (string.IsNullOrEmpty(password))
+        //    {
+        //        logger.LogError("Attempted login with a null or empty password.");
+        //        return false;
+        //    }
 
-            NhanVien nhanVien = listNV.FirstOrDefault(nv => nv.UsernameNV == username);
+        //    NhanVien nhanVien = listNV.FirstOrDefault(nv => nv.SoDienThoai == sdt);
 
-            if (nhanVien != null)
-            {
-                // In a real application, you would hash and salt passwords for security.
-                // Here, for simplicity, we are doing a direct string comparison.
-                if (nhanVien.PasswordNV == password)
-                {
-                    logger.LogInformation($"Login successful for user: {username}");
-                    return true; // Login successful
-                }
-                else
-                {
-                    logger.LogWarning($"Login failed for user: {username} - Incorrect password.");
-                    return false; // Incorrect password
-                }
-            }
-            else
-            {
-                logger.LogWarning($"Login failed for user: {username} - User not found.");
-                return false; // User not found
-            }
-        }
+        //    if (nhanVien != null)
+        //    {
+        //        // In a real application, you would hash and salt passwords for security.
+        //        // Here, for simplicity, we are doing a direct string comparison.
+        //        if (nhanVien.Password == password)
+        //        {
+        //            logger.LogInformation($"Login successful for user: {sdt}");
+        //            return true; // Login successful
+        //        }
+        //        else
+        //        {
+        //            logger.LogWarning($"Login failed for user: {sdt} - Incorrect password.");
+        //            return false; // Incorrect password
+        //        }
+        //    }
+        //    else
+        //    {
+        //        logger.LogWarning($"Login failed for user: {sdt} - User not found.");
+        //        return false; // User not found
+        //    }
+        //}
         // Method to return all the NhanVien
         public List<NhanVien> GetAllNhanVien()
         {

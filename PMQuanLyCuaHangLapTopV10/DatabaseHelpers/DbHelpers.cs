@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PMQuanLyCuaHangLapTopV10.DatabaseHelpers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,7 +8,7 @@ namespace PMQuanLyCuaHangLapTopV10
 {
     public class DbHelpers
     {
-        private readonly string strConnection = "Data Source=DESKTOP-PVG090N;Initial Catalog=laptopStoreDB;Integrated Security=True;Trust Server Certificate=True";
+        
         private readonly Logger logger = Logger.Instance();
 
         // Khởi tạo kết nối SQL
@@ -15,7 +16,7 @@ namespace PMQuanLyCuaHangLapTopV10
         {
             try
             {
-                var conn = new SqlConnection(strConnection);
+                var conn = new SqlConnection(DBconnection.strConnection);
                 conn.Open();
                 return conn;
             }

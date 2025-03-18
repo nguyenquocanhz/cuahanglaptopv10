@@ -65,6 +65,7 @@
       <HintPath>..\packages\System.Configuration.ConfigurationManager.9.0.2\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -84,7 +85,15 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="ButtonCornerRadius.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ButtonCornerRadius.Designer.cs">
+      <DependentUpon>ButtonCornerRadius.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseHelpers\DBconnection.cs" />
     <Compile Include="DatabaseHelpers\DbHelpers.cs" />
+    <Compile Include="DatabaseHelpers\SessionManager.cs" />
     <Compile Include="frmFeedback.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +118,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhanVien.Designer.cs">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Models\KhachHang.cs" />
@@ -123,13 +138,21 @@
     <Compile Include="Services\HoaDonServices.cs" />
     <Compile Include="Services\KhachHangServices.cs" />
     <Compile Include="Services\KhuyenMaiServices.cs" />
-    <Compile Include="Services\NhanVienServices.cs" />
     <Compile Include="Services\PhieuNhapServices.cs" />
     <Compile Include="Services\SanPhamServices.cs" />
     <Compile Include="Services\TrungTamBaoHanhServices.cs" />
+    <Compile Include="setupTaiKhoanQuanTri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="setupTaiKhoanQuanTri.Designer.cs">
+      <DependentUpon>setupTaiKhoanQuanTri.cs</DependentUpon>
+    </Compile>
     <Compile Include="telegramServices.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ButtonCornerRadius.resx">
+      <DependentUpon>ButtonCornerRadius.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFeedback.resx">
       <DependentUpon>frmFeedback.cs</DependentUpon>
@@ -143,6 +166,9 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNhanVien.resx">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -153,6 +179,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="setupTaiKhoanQuanTri.resx">
+      <DependentUpon>setupTaiKhoanQuanTri.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

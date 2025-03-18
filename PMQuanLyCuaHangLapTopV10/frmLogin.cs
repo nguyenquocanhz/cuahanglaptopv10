@@ -1,4 +1,6 @@
-﻿using PMQuanLyCuaHangLapTopV10.Models;
+﻿using PMQuanLyCuaHangLapTopV10.DatabaseHelpers;
+using PMQuanLyCuaHangLapTopV10.Models;
+using PMQuanLyCuaHangLapTopV10.Models.PMQuanLyCuaHangLaptop.Models;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,7 +14,7 @@ namespace PMQuanLyCuaHangLapTopV10
         private Point offset;                // Offset from the mouse click to the form's top-left corner
         private Color originalExitButtonForeColor; // Store original exit button forcolor for hover effect
         private Color hoverExitButtonForeColor = Color.White; // Hover color for exit button
-
+        
 
         public frmLogin()
         {
@@ -102,25 +104,57 @@ namespace PMQuanLyCuaHangLapTopV10
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            ListNV listNV = new ListNV();
+            string username = txtAcc.Text;
+            string pass = txtPass.Text;
+            NhanVienDAO nhanVienDAO = new NhanVienDAO();
+            NhanVien nv = nhanVienDAO.DangNhap(username, pass);
 
-            if (listNV.CheckDangNhap(txtAcc.Text, txtPass.Text))
+            if (nv != null)
             {
+                // Lưu thông tin phiên đăng nhập
+                SessionManager.IsLoggedIn = true;
+                SessionManager.Username = nv.HoTenNV;
+                SessionManager.Role = nv.QuyenHan;
+
+                // Đăng nhập thành công
+                MessageBox.Show("🔓 Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frmMain frmMain = new frmMain();
                 this.Hide();
                 frmMain.Show();
-                MessageBox.Show("Login Success");
-            }
-            else 
-            {
-                MessageBox.Show("Login Failed");
+
 
             }
+            else
+            {
+                // Kiểm tra nếu tài khoản không tồn tại hoặc sai thông tin
+                if (!nhanVienDAO.CheckPhoneNumberExists(username))
+                {
+                    MessageBox.Show("⚠️ Số điện thoại không tồn tại trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (!nhanVienDAO.CheckPasswordCorrect(username, pass))
+                {
+                    MessageBox.Show("🚫 Mật khẩu không chính xác! Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("❌ Không thể kết nối đến cơ sở dữ liệu! Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void txtAcc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Chỉ cho phép nhập số và phím Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Chặn ký tự không hợp lệ
+            }
         }
     }
 }

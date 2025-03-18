@@ -77,9 +77,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(84)))), ((int)(((byte)(127)))));
             this.label1.Location = new System.Drawing.Point(480, 210);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 24);
+            this.label1.Size = new System.Drawing.Size(149, 24);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Tài Khoản:";
+            this.label1.Text = "Số điện thoại:";
             // 
             // label2
             // 
@@ -99,6 +99,7 @@
             this.txtAcc.Name = "txtAcc";
             this.txtAcc.Size = new System.Drawing.Size(450, 39);
             this.txtAcc.TabIndex = 1;
+            this.txtAcc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAcc_KeyPress);
             // 
             // txtPass
             // 
