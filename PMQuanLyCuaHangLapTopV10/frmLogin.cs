@@ -156,5 +156,10 @@ namespace PMQuanLyCuaHangLapTopV10
                 e.Handled = true; // Chặn ký tự không hợp lệ
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
