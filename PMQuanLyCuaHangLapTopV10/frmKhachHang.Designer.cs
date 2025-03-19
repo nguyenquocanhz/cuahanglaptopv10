@@ -45,6 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvListNhanVien = new System.Windows.Forms.DataGridView();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,6 +67,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.guna2Button1);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.btnAdd);
@@ -235,7 +237,7 @@
             this.dgvListNhanVien.Name = "dgvListNhanVien";
             this.dgvListNhanVien.RowHeadersWidth = 51;
             this.dgvListNhanVien.RowTemplate.Height = 24;
-            this.dgvListNhanVien.Size = new System.Drawing.Size(901, 538);
+            this.dgvListNhanVien.Size = new System.Drawing.Size(880, 538);
             this.dgvListNhanVien.TabIndex = 0;
             this.dgvListNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListNhanVien_CellClick);
             // 
@@ -278,5 +280,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMaKH;
         private System.Windows.Forms.Label label5;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
