@@ -233,6 +233,16 @@ namespace PMQuanLyCuaHangLapTopV10.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_spanner_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-spanner-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_supplier_25 {
             get {
                 object obj = ResourceManager.GetObject("icons8-supplier-25", resourceCulture);

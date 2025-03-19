@@ -42,6 +42,7 @@
             this.btnExit = new System.Windows.Forms.Label();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.btnClosed = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlDragBar.SuspendLayout();
@@ -69,6 +70,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -77,7 +79,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(84)))), ((int)(((byte)(127)))));
             this.label1.Location = new System.Drawing.Point(480, 210);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 24);
+            this.label1.Size = new System.Drawing.Size(122, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "Số điện thoại:";
             // 
@@ -88,7 +90,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(84)))), ((int)(((byte)(127)))));
             this.label2.Location = new System.Drawing.Point(480, 310);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 24);
+            this.label2.Size = new System.Drawing.Size(92, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mật Khẩu:";
             // 
@@ -97,7 +99,7 @@
             this.txtAcc.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAcc.Location = new System.Drawing.Point(484, 245);
             this.txtAcc.Name = "txtAcc";
-            this.txtAcc.Size = new System.Drawing.Size(450, 39);
+            this.txtAcc.Size = new System.Drawing.Size(450, 32);
             this.txtAcc.TabIndex = 1;
             this.txtAcc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAcc_KeyPress);
             // 
@@ -107,7 +109,7 @@
             this.txtPass.Location = new System.Drawing.Point(484, 345);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '●';
-            this.txtPass.Size = new System.Drawing.Size(450, 39);
+            this.txtPass.Size = new System.Drawing.Size(450, 32);
             this.txtPass.TabIndex = 2;
             // 
             // label3
@@ -117,7 +119,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(101)))), ((int)(((byte)(106)))));
             this.label3.Location = new System.Drawing.Point(476, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(365, 46);
+            this.label3.Size = new System.Drawing.Size(294, 37);
             this.label3.TabIndex = 1;
             this.label3.Text = "Đăng Nhập Tài Khoản";
             // 
@@ -146,7 +148,7 @@
             this.checkShowPwd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(84)))), ((int)(((byte)(127)))));
             this.checkShowPwd.Location = new System.Drawing.Point(484, 415);
             this.checkShowPwd.Name = "checkShowPwd";
-            this.checkShowPwd.Size = new System.Drawing.Size(212, 28);
+            this.checkShowPwd.Size = new System.Drawing.Size(174, 23);
             this.checkShowPwd.TabIndex = 3;
             this.checkShowPwd.Text = "Hiển thị mật khẩu";
             this.checkShowPwd.UseVisualStyleBackColor = true;
@@ -164,7 +166,7 @@
             this.btnExit.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnExit.Location = new System.Drawing.Point(945, 5);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(30, 32);
+            this.btnExit.Size = new System.Drawing.Size(24, 25);
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "X";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -188,19 +190,32 @@
             // btnClosed
             // 
             this.btnClosed.AutoSize = true;
+            this.btnClosed.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClosed.Location = new System.Drawing.Point(508, 5);
             this.btnClosed.Name = "btnClosed";
-            this.btnClosed.Size = new System.Drawing.Size(22, 24);
+            this.btnClosed.Size = new System.Drawing.Size(18, 19);
             this.btnClosed.TabIndex = 7;
             this.btnClosed.Text = "X";
             this.btnClosed.Click += new System.EventHandler(this.btnClosed_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.linkLabel1.Location = new System.Drawing.Point(816, 415);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(118, 19);
+            this.linkLabel1.TabIndex = 7;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Quên mật khẩu";
+            // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(983, 675);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pnlDragBar);
             this.Controls.Add(this.checkShowPwd);
             this.Controls.Add(this.btnLogin);
@@ -243,5 +258,6 @@
         private System.Windows.Forms.Label btnExit;
         private System.Windows.Forms.Panel pnlDragBar;
         private System.Windows.Forms.Label btnClosed;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

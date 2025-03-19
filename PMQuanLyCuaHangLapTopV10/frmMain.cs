@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace PMQuanLyCuaHangLapTopV10
 {
-    public partial class frmMain: Form
+    public partial class frmMain : Form
     {
 
         public frmMain()
@@ -23,26 +23,26 @@ namespace PMQuanLyCuaHangLapTopV10
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(SessionManager.Username))
-            {
-                label2.Text = "Xin chào : " + SessionManager.Username;
-                label3.Text = "Xin chào : " + SessionManager.Role;
+            //if (!string.IsNullOrEmpty(SessionManager.Username))
+            //{
+            //    label2.Text = "Xin chào : " + SessionManager.Username;
+            //    label3.Text = "Xin chào : " + SessionManager.Role;
 
-            }
-            else
-            {
-                label2.Text = "Xin chào : [Không có dữ liệu]";
-            }
-            if (SessionManager.Role != "admin")
-            {
-                Menu1.Visible = true;
-                Menu2.Visible = false;
-            }
-            else
-            {
-                Menu1.Visible = true;
-                Menu2.Visible = true;
-            }
+            //}
+            //else
+            //{
+            //    label2.Text = "Xin chào : [Không có dữ liệu]";
+            //}
+            //if (SessionManager.Role != "admin")
+            //{
+            //    Menu1.Visible = true;
+            //    Menu2.Visible = false;
+            //}
+            //else
+            //{
+            //    Menu1.Visible = true;
+            //    Menu2.Visible = true;
+            //}
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
