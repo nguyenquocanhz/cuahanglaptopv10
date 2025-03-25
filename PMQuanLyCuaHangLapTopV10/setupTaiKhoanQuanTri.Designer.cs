@@ -39,10 +39,10 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelQuyenHan = new System.Windows.Forms.Label();
-            this.textBoxQuyenHan = new System.Windows.Forms.TextBox();
             this.labelChucDanh = new System.Windows.Forms.Label();
             this.textBoxChucDanh = new System.Windows.Forms.TextBox();
             this.buttonLuu = new System.Windows.Forms.Button();
+            this.cbQuyenHan = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelHoTen
@@ -93,9 +93,12 @@
             // 
             this.dateTimePickerNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(200, 130);
+            this.dateTimePickerNgaySinh.MaxDate = new System.DateTime(2009, 12, 31, 0, 0, 0, 0);
+            this.dateTimePickerNgaySinh.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
             this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(200, 22);
             this.dateTimePickerNgaySinh.TabIndex = 5;
+            this.dateTimePickerNgaySinh.Value = new System.DateTime(2009, 12, 31, 0, 0, 0, 0);
             // 
             // labelSoDienThoai
             // 
@@ -142,13 +145,6 @@
             this.labelQuyenHan.TabIndex = 10;
             this.labelQuyenHan.Text = "Quyền hạn:";
             // 
-            // textBoxQuyenHan
-            // 
-            this.textBoxQuyenHan.Location = new System.Drawing.Point(200, 250);
-            this.textBoxQuyenHan.Name = "textBoxQuyenHan";
-            this.textBoxQuyenHan.Size = new System.Drawing.Size(200, 22);
-            this.textBoxQuyenHan.TabIndex = 11;
-            // 
             // labelChucDanh
             // 
             this.labelChucDanh.AutoSize = true;
@@ -176,11 +172,24 @@
             this.buttonLuu.UseVisualStyleBackColor = true;
             this.buttonLuu.Click += new System.EventHandler(this.buttonLuu_Click);
             // 
+            // cbQuyenHan
+            // 
+            this.cbQuyenHan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbQuyenHan.FormattingEnabled = true;
+            this.cbQuyenHan.Items.AddRange(new object[] {
+            "admin",
+            "staff"});
+            this.cbQuyenHan.Location = new System.Drawing.Point(200, 250);
+            this.cbQuyenHan.Name = "cbQuyenHan";
+            this.cbQuyenHan.Size = new System.Drawing.Size(200, 24);
+            this.cbQuyenHan.TabIndex = 15;
+            // 
             // setupTaiKhoanQuanTri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 400);
+            this.ClientSize = new System.Drawing.Size(627, 400);
+            this.Controls.Add(this.cbQuyenHan);
             this.Controls.Add(this.labelHoTen);
             this.Controls.Add(this.textBoxHoTen);
             this.Controls.Add(this.labelGioiTinh);
@@ -192,13 +201,13 @@
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.labelQuyenHan);
-            this.Controls.Add(this.textBoxQuyenHan);
             this.Controls.Add(this.labelChucDanh);
             this.Controls.Add(this.textBoxChucDanh);
             this.Controls.Add(this.buttonLuu);
             this.Name = "setupTaiKhoanQuanTri";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm Nhân Viên";
+            this.Load += new System.EventHandler(this.setupTaiKhoanQuanTri_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,9 +226,9 @@
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label labelQuyenHan;
-        private System.Windows.Forms.TextBox textBoxQuyenHan;
         private System.Windows.Forms.Label labelChucDanh;
         private System.Windows.Forms.TextBox textBoxChucDanh;
         private System.Windows.Forms.Button buttonLuu;
+        private System.Windows.Forms.ComboBox cbQuyenHan;
     }
 }

@@ -1,6 +1,5 @@
 ﻿using PMQuanLyCuaHangLapTopV10.DatabaseHelpers;
 using PMQuanLyCuaHangLapTopV10.Models;
-using PMQuanLyCuaHangLapTopV10.Models.PMQuanLyCuaHangLaptop.Models;
 using System;
 using System.Drawing;
 using System.Windows.Forms;

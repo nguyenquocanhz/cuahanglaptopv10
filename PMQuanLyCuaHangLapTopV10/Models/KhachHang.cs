@@ -8,22 +8,21 @@ namespace PMQuanLyCuaHangLapTopV10.Models
 {
     public class KhachHang
     {
-        public KhachHang() { }
         public string MaKhachHang { get; set; }
         public string HoTen { get; set; }
-        public string DiaChi { get; set; }
+        public string GioiTinh { get; set; }
         public string SoDienThoai { get; set; }
-        public string Email { get; set; }
+        public string DiaChiKH { get; set; }
 
-        // Constructor để khởi tạo các giá trị cho đối tượng KhachHang
-        public KhachHang(string maKhachHang, string hoTen, string diaChi, string soDienThoai, string email)
+        public KhachHang() { }
+
+        public KhachHang(string maKhachHang, string hoTen, string gioiTinh, string soDienThoai, string diaChiKH)
         {
             MaKhachHang = maKhachHang;
             HoTen = hoTen;
-            DiaChi = diaChi;
+            GioiTinh = gioiTinh;
             SoDienThoai = soDienThoai;
-            Email = email;
+            DiaChiKH = diaChiKH;
         }
     }
 }
-

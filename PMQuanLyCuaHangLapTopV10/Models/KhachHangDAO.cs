@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMQuanLyCuaHangLapTopV10.Services
+namespace PMQuanLyCuaHangLapTopV10.Models
 {
-    class HoaDonServices
+    class KhachHangDAO
     {
     }
 }

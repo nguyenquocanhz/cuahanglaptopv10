@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using PMQuanLyCuaHangLapTopV10.Models.PMQuanLyCuaHangLaptop.Models;
 using PMQuanLyCuaHangLapTopV10.DatabaseHelpers;
 
 
@@ -74,52 +73,50 @@ namespace PMQuanLyCuaHangLapTopV10.Models
                 return count > 0;
             }
         }
-        // Kiểm tra tài khoản có bị khóa không
-        //private bool CheckAccountLocked(string soDienThoai)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
-        //    {
-        //        string query = "SELECT TrangThai FROM NhanVien WHERE soDienThoai = @SoDienThoai";
-        //        SqlCommand command = new SqlCommand(query, connection);
-        //        command.Parameters.AddWithValue("@SoDienThoai", soDienThoai);
-
-        //        connection.Open();
-        //        object result = command.ExecuteScalar();
-        //        return result != null && result.ToString() == "Khoa"; // Giả sử "Khoa" là trạng thái bị khóa
-        //    }
-        //}
         // Phương thức lấy danh sách nhân viên
-        public List<NhanVien> GetAllNhanVien()
+        public DataTable GetAllNhanVien()
         {
-            List<NhanVien> nhanViens = new List<NhanVien>();
+            DataTable nhanViens = new DataTable();
+
+            // Thêm cột vào DataTable
+            nhanViens.Columns.Add("MaNV", typeof(string));
+            nhanViens.Columns.Add("HoTenNV", typeof(string));
+            nhanViens.Columns.Add("GioiTinh", typeof(string));
+            nhanViens.Columns.Add("NgaySinh", typeof(DateTime));
+            nhanViens.Columns.Add("SoDienThoai", typeof(string));
+            nhanViens.Columns.Add("Password", typeof(string));
+            nhanViens.Columns.Add("QuyenHan", typeof(string));
+            nhanViens.Columns.Add("ChucDanh", typeof(string));
+            nhanViens.Columns.Add("DiaChiNV", typeof(string));
 
             using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
             {
-                string query = "SELECT maNV, hoTenNV, gioiTinh, ngaySinh, soDienThoai, password, quyenHan, chucDanh FROM NhanVien";
+                string query = "SELECT maNV, hoTenNV, gioiTinh, ngaySinh, soDienThoai, password, quyenHan, chucDanh, DiaChiNV FROM NhanVien";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
+
                 while (reader.Read())
                 {
-                    NhanVien nv = new NhanVien(
-                        reader["MaNV"].ToString(),
+                    nhanViens.Rows.Add(
+                        reader["maNV"].ToString(),
                         reader["hoTenNV"].ToString(),
                         reader["gioiTinh"].ToString(),
-                        reader["ngaySinh"] as DateTime?,
+                        reader["ngaySinh"] == DBNull.Value ? (object)DBNull.Value : (DateTime)reader["ngaySinh"],
                         reader["soDienThoai"].ToString(),
                         reader["password"].ToString(),
                         reader["quyenHan"].ToString(),
                         reader["chucDanh"].ToString(),
                         reader["DiaChiNV"].ToString()
                     );
-                    nhanViens.Add(nv);
                 }
                 reader.Close();
             }
 
             return nhanViens;
         }
+
 
         // Phương thức thêm nhân viên mới
         public void AddNhanVien(NhanVien nhanVien)

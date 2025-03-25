@@ -20,29 +20,36 @@ namespace PMQuanLyCuaHangLapTopV10
         {
             InitializeComponent();
         }
+        // display form child 
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
+        {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            Menu1.Controls.Add(childForm);
+            Menu1.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //if (!string.IsNullOrEmpty(SessionManager.Username))
-            //{
-            //    label2.Text = "Xin chào : " + SessionManager.Username;
-            //    label3.Text = "Xin chào : " + SessionManager.Role;
+            if (!string.IsNullOrEmpty(SessionManager.Username))
+            {
+                label2.Text = "Xin chào : " + SessionManager.Username;
+                label3.Text = "Chức vụ : " + SessionManager.Role;
 
-            //}
-            //else
-            //{
-            //    label2.Text = "Xin chào : [Không có dữ liệu]";
-            //}
-            //if (SessionManager.Role != "admin")
-            //{
-            //    Menu1.Visible = true;
-            //    Menu2.Visible = false;
-            //}
-            //else
-            //{
-            //    Menu1.Visible = true;
-            //    Menu2.Visible = true;
-            //}
+            }
+            else
+            {
+                label2.Text = "Xin chào : [Không có dữ liệu]";
+            }
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -85,9 +92,7 @@ namespace PMQuanLyCuaHangLapTopV10
 
         private void btnFeedback_Click(object sender, EventArgs e)
         {
-            frmFeedback frmFeedback = new frmFeedback();
-            frmFeedback.Show();
-            this.Hide();
+
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
@@ -125,6 +130,12 @@ namespace PMQuanLyCuaHangLapTopV10
             {
                 Application.Exit();
             }
+        }
+
+        private void frmSanPham_Click(object sender, EventArgs e)
+        {
+            frmSanPham frmSanPham = new frmSanPham();
+            frmSanPham.ShowDialog();
         }
     }
 }

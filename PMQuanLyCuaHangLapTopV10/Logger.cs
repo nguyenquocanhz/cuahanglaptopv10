@@ -10,7 +10,7 @@ namespace PMQuanLyCuaHangLapTopV10
         private static readonly object lockObject = new object(); // Lock object for thread safety
 
         // Constructor (private for Singleton pattern)
-        private Logger()
+        public Logger()
         {
             // Optionally, create the log file if it doesn't exist:
             if (!File.Exists(logFilePath))
