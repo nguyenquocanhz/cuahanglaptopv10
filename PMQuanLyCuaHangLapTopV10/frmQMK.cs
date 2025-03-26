@@ -23,7 +23,7 @@ namespace PMQuanLyCuaHangLapTopV10
         private void btnVerify_Click(object sender, EventArgs e)
         {
 
-            if (txtUsername.Text != "0123")
+            if (!nhanVienDAO.CheckPhoneNumberExists(txtUsername.Text.Trim()))
             {
                 MessageBox.Show("⚠️ Số điện thoại không tồn tại trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
