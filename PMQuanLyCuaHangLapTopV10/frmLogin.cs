@@ -166,5 +166,10 @@ namespace PMQuanLyCuaHangLapTopV10
         {
 
         }
+
+        private void pnlDragBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
