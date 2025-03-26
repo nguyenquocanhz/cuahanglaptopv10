@@ -13,13 +13,19 @@ namespace PMQuanLyCuaHangLapTopV10
 {
     public partial class frmNhanVien: Form
     {
+        public DbHelpers db = DbHelpers.Instance();
         public frmNhanVien()
         {
             InitializeComponent();
         }
 
         private void btnView_Click(object sender, EventArgs e)
-        {  
+        {
+            if (!db.CheckConnection())
+            {
+                MessageBox.Show("Không thể kết nối đến cơ sở dữ liệu", "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             InitDGV();
         }
         // định dạng dgv
@@ -52,6 +58,11 @@ namespace PMQuanLyCuaHangLapTopV10
 
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

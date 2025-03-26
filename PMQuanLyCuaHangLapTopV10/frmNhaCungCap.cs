@@ -14,6 +14,8 @@ namespace PMQuanLyCuaHangLapTopV10
     public partial class frmNhaCungCap: Form
     {
         public DataTable listNhaCungCap;
+        public DbHelpers db = DbHelpers.Instance();
+
         public frmNhaCungCap()
         {
             InitializeComponent();
@@ -22,6 +24,11 @@ namespace PMQuanLyCuaHangLapTopV10
 
         private void frmNhaCungCap_Load(object sender, EventArgs e)
         {
+            if (!db.CheckConnection())
+            {
+                MessageBox.Show("Không thể kết nối đến cơ sở dữ liệu", "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             LoadData();
         }
 

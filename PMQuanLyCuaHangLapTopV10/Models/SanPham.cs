@@ -10,26 +10,26 @@ namespace PMQuanLyCuaHangLapTopV10.Models
     {
         public string MaSP { get; set; }
         public string TenSP { get; set; }
-        public string LoaiSP { get; set; }
         public int ThoiGianBaoHanh { get; set; }
         public int SoLuongSP { get; set; }
         public string MoTaChiTiet { get; set; }
 
-        public decimal DonGia { get; set; }
+        public decimal GiaBan { get; set; }
+        public decimal GiaNhap { get; set; }
         public int MaNCC { get; set; }
 
         
         public SanPham() { }
 
-        public SanPham(string maSP, string tenSP, string loaiSP, int thoiGianBaoHanh, int soLuongSP, string moTaChiTiet, decimal donGia, int maNCC)
+        public SanPham(string maSP, string tenSP, string loaiSP, int thoiGianBaoHanh, int soLuongSP, string moTaChiTiet, decimal donGia,decimal giaNhap , int maNCC)
         {
             MaSP = maSP;
             TenSP = tenSP;
-            LoaiSP = loaiSP;
             ThoiGianBaoHanh = thoiGianBaoHanh;
             SoLuongSP = soLuongSP;
             MoTaChiTiet = moTaChiTiet;
-            DonGia = donGia;
+            GiaBan = donGia;
+            GiaNhap = giaNhap;
             MaNCC = maNCC;
         }
     }

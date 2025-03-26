@@ -8,15 +8,26 @@ namespace PMQuanLyCuaHangLapTopV10
 {
     public class DbHelpers
     {
-        
+        // Static instance for easier access
+        private static DbHelpers _instance;
+        public static DbHelpers Instance()
+        {
+            if (_instance == null)
+            {
+                _instance = new DbHelpers();
+            }
+            return _instance;
+        }
         private readonly Logger logger = Logger.Instance();
+        public string ConnectionString => DBconnection.strConnection;
 
+        private DbHelpers() { }
         // Khởi tạo kết nối SQL
         private SqlConnection GetConnection()
         {
             try
             {
-                var conn = new SqlConnection(DBconnection.strConnection);
+                var conn = new SqlConnection(ConnectionString);
                 conn.Open();
                 return conn;
             }
@@ -26,7 +37,20 @@ namespace PMQuanLyCuaHangLapTopV10
                 throw new Exception("Không thể kết nối đến cơ sở dữ liệu.", ex);
             }
         }
-
+        public bool CheckConnection()
+        {
+            try
+            {
+                using (SqlConnection conn = GetConnection())
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         // Thực thi truy vấn trả về DataTable
         public DataTable ExecuteQuery(string query, Dictionary<string, object> parameters = null)
         {

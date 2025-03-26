@@ -13,7 +13,8 @@ namespace PMQuanLyCuaHangLapTopV10
         private Point offset;                // Offset from the mouse click to the form's top-left corner
         private Color originalExitButtonForeColor; // Store original exit button forcolor for hover effect
         private Color hoverExitButtonForeColor = Color.White; // Hover color for exit button
-        
+        public DbHelpers db = DbHelpers.Instance();
+
 
         public frmLogin()
         {
@@ -25,6 +26,11 @@ namespace PMQuanLyCuaHangLapTopV10
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            if (!db.CheckConnection())
+            {
+                MessageBox.Show("Không thể kết nối đến cơ sở dữ liệu", "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             formFadeInTimer.Start();
             txtAcc.Focus();
         }

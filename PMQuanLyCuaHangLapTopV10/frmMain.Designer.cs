@@ -31,15 +31,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Menu1 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
             this.frmSanPham = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.Menu1.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +77,19 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Xin chào, Nguyễn Quốc Anh";
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_logout_48;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(963, 24);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(197, 45);
+            this.btnLogout.TabIndex = 0;
+            this.btnLogout.Text = "Đăng xuất";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -104,18 +117,6 @@
             this.Menu1.Size = new System.Drawing.Size(1172, 636);
             this.Menu1.TabIndex = 4;
             // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_spanner_25;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(436, 64);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(218, 134);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Bảo hành";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
             // frmSanPham
             // 
             this.frmSanPham.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -129,6 +130,18 @@
             this.frmSanPham.UseVisualStyleBackColor = true;
             this.frmSanPham.Click += new System.EventHandler(this.frmSanPham_Click);
             // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_spanner_25;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(436, 73);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(218, 134);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "Bảo hành";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -140,18 +153,6 @@
             this.button4.TabIndex = 0;
             this.button4.Text = "Hóa đơn";
             this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_employee_25;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(852, 359);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(218, 134);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Nhân viên";
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
@@ -165,6 +166,18 @@
             this.button6.Text = "Thống kê";
             this.button6.UseVisualStyleBackColor = true;
             // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_employee_25;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(852, 347);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(218, 134);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Nhân viên";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -176,19 +189,6 @@
             this.button3.TabIndex = 0;
             this.button3.Text = "Nhà cung cấp";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_logout_48;
-            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(963, 24);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(197, 45);
-            this.btnLogout.TabIndex = 0;
-            this.btnLogout.Text = "Đăng xuất";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
             // 
             // frmMain
             // 

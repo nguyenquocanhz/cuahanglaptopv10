@@ -38,7 +38,7 @@
             this.btnDel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtSdt = new System.Windows.Forms.TextBox();
+            this.txtCCCD = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             this.panel1.Controls.Add(this.btnDel);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtSdt);
+            this.panel1.Controls.Add(this.txtCCCD);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label4);
@@ -89,12 +89,13 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(424, 762);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // ngaySinhNhat
             // 
             this.ngaySinhNhat.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ngaySinhNhat.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.ngaySinhNhat.Location = new System.Drawing.Point(180, 251);
+            this.ngaySinhNhat.Location = new System.Drawing.Point(180, 193);
             this.ngaySinhNhat.Name = "ngaySinhNhat";
             this.ngaySinhNhat.Size = new System.Drawing.Size(170, 29);
             this.ngaySinhNhat.TabIndex = 7;
@@ -108,7 +109,7 @@
             "Quản lý",
             "Nhân Viên Bán hàng",
             "Nhân viên kỹ thuật"});
-            this.cbChucDanh.Location = new System.Drawing.Point(180, 154);
+            this.cbChucDanh.Location = new System.Drawing.Point(180, 107);
             this.cbChucDanh.Name = "cbChucDanh";
             this.cbChucDanh.Size = new System.Drawing.Size(170, 30);
             this.cbChucDanh.TabIndex = 6;
@@ -121,7 +122,7 @@
             this.cbRole.Items.AddRange(new object[] {
             "Admin",
             "Staff"});
-            this.cbRole.Location = new System.Drawing.Point(180, 392);
+            this.cbRole.Location = new System.Drawing.Point(180, 333);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(93, 30);
             this.cbRole.TabIndex = 6;
@@ -134,7 +135,7 @@
             this.cbSex.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.cbSex.Location = new System.Drawing.Point(180, 207);
+            this.cbSex.Location = new System.Drawing.Point(180, 148);
             this.cbSex.Name = "cbSex";
             this.cbSex.Size = new System.Drawing.Size(93, 30);
             this.cbSex.TabIndex = 6;
@@ -184,25 +185,25 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 154);
+            this.label5.Location = new System.Drawing.Point(16, 107);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 21);
             this.label5.TabIndex = 0;
             this.label5.Text = "Chức danh:";
             // 
-            // txtSdt
+            // txtCCCD
             // 
-            this.txtSdt.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSdt.Location = new System.Drawing.Point(180, 106);
-            this.txtSdt.Name = "txtSdt";
-            this.txtSdt.Size = new System.Drawing.Size(170, 29);
-            this.txtSdt.TabIndex = 4;
+            this.txtCCCD.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCCCD.Location = new System.Drawing.Point(180, 375);
+            this.txtCCCD.Name = "txtCCCD";
+            this.txtCCCD.Size = new System.Drawing.Size(170, 29);
+            this.txtCCCD.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(16, 251);
+            this.label6.Location = new System.Drawing.Point(16, 193);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 21);
             this.label6.TabIndex = 0;
@@ -213,7 +214,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(16, 391);
+            this.label9.Location = new System.Drawing.Point(16, 332);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(108, 21);
             this.label9.TabIndex = 0;
@@ -224,7 +225,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(16, 207);
+            this.label4.Location = new System.Drawing.Point(16, 148);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 21);
             this.label4.TabIndex = 0;
@@ -235,16 +236,16 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 106);
+            this.label3.Location = new System.Drawing.Point(16, 379);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 21);
+            this.label3.Size = new System.Drawing.Size(89, 21);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Số ĐT:";
+            this.label3.Text = "Số CCCD:";
             // 
             // txtPwd
             // 
             this.txtPwd.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPwd.Location = new System.Drawing.Point(180, 344);
+            this.txtPwd.Location = new System.Drawing.Point(180, 286);
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.Size = new System.Drawing.Size(170, 29);
             this.txtPwd.TabIndex = 4;
@@ -261,7 +262,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(16, 343);
+            this.label8.Location = new System.Drawing.Point(16, 285);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(139, 21);
             this.label8.TabIndex = 0;
@@ -280,7 +281,7 @@
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(180, 299);
+            this.txtUserName.Location = new System.Drawing.Point(180, 241);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(170, 29);
             this.txtUserName.TabIndex = 4;
@@ -297,7 +298,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(16, 299);
+            this.label7.Location = new System.Drawing.Point(16, 241);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(133, 21);
             this.label7.TabIndex = 0;
@@ -358,7 +359,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox txtSdt;
+        private System.Windows.Forms.TextBox txtCCCD;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;

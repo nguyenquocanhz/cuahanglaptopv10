@@ -18,6 +18,7 @@ namespace PMQuanLyCuaHangLapTopV10.Models
         public string ChucDanh { get; set; }
         public string DiaChiNV { get; set; }
 
+        public string CCCD { get; set; }
         public NhanVien() { }
 
         public NhanVien(string maNV, string hoTenNV, string gioiTinh, DateTime? ngaySinh, string soDienThoai, string password, string quyenHan, string chucDanh, string diaChiNV)

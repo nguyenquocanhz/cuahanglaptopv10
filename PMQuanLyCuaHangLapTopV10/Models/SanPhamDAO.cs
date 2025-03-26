@@ -12,6 +12,7 @@ namespace PMQuanLyCuaHangLapTopV10.Models
         // 📌 Lấy danh sách sản phẩm dưới dạng DataTable
         public DataTable GetList()
         {
+
             DataTable dt = new DataTable();
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -28,21 +29,20 @@ namespace PMQuanLyCuaHangLapTopV10.Models
         }
 
         // 📌 Thêm sản phẩm (trả về true nếu thành công)
-        public bool Insert(string maSP, string tenSP, string loaiSP, int thoiGianBaoHanh, int soLuongSP, string moTaChiTiet, decimal donGiaSP, int maNCC)
+        public bool InsertSP(string tenSP, int thoiGianBaoHanh, int soLuongSP, string moTaChiTiet, decimal donGiaSP, decimal giaNhapSP, int maNCC)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO SanPham (MaSP, TenSP, LoaiSP, ThoiGianBaoHanh, SoLuongSP, MoTaChiTiet, DonGia, MaNCC) " +
-                               "VALUES (@MaSP, @TenSP, @LoaiSP, @ThoiGianBaoHanh, @SoLuongSP, @MoTaChiTiet, @DonGiaSP, @MaNCC)";
+                string query = "INSERT INTO SanPham (TenSP, ThoiGianBaoHanh, SoLuongSP, MoTaChiTiet, GiaNhap ,GiaBan, MaNCC) " +
+                               "VALUES (@TenSP, @ThoiGianBaoHanh, @SoLuongSP, @MoTaChiTiet, @GiaBan, @GiaNhap, @MaNCC)";
 
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MaSP", maSP);
                 command.Parameters.AddWithValue("@TenSP", tenSP);
-                command.Parameters.AddWithValue("@LoaiSP", loaiSP);
                 command.Parameters.AddWithValue("@ThoiGianBaoHanh", thoiGianBaoHanh);
                 command.Parameters.AddWithValue("@SoLuongSP", soLuongSP);
                 command.Parameters.AddWithValue("@MoTaChiTiet", moTaChiTiet);
-                command.Parameters.AddWithValue("@DonGiaSP", donGiaSP);
+                command.Parameters.AddWithValue("@GiaBan", donGiaSP);
+                command.Parameters.AddWithValue("@GiaNhap", giaNhapSP);
                 command.Parameters.AddWithValue("@MaNCC", maNCC);
 
                 connection.Open();
