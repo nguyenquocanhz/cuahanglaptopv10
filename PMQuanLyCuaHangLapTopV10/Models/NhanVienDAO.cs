@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using PMQuanLyCuaHangLapTopV10.DatabaseHelpers;
+using System.Linq;
 
 
 namespace PMQuanLyCuaHangLapTopV10.Models
@@ -140,7 +141,59 @@ namespace PMQuanLyCuaHangLapTopV10.Models
                 command.ExecuteNonQuery();
             }
         }
+        public bool CheckQuyenHanNhanVien(string maNV, string quyenHanCanKiemTra)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
+                {
+                    // Truy vấn kiểm tra quyền hạn của nhân viên
+                    string query = @"
+                SELECT quyenHan 
+                FROM NhanVien 
+                WHERE maNV = @MaNV";
 
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Thêm tham số để tránh SQL Injection
+                        command.Parameters.AddWithValue("@MaNV", maNV);
+
+                        connection.Open();
+
+                        // Thực thi truy vấn và lấy quyền hạn
+                        object result = command.ExecuteScalar();
+
+                        // Kiểm tra kết quả
+                        if (result != null)
+                        {
+                            string quyenHanHienTai = result.ToString();
+
+                            // So sánh quyền hạn
+                            // Ví dụ: Quyền hạn được lưu như "Admin,NhanVien,QuanLy"
+                            string[] quyenHanCuaNhanVien = quyenHanHienTai.Split(',');
+                            string[] quyenHanCanCheck = quyenHanCanKiemTra.Split(',');
+
+                            // Kiểm tra xem nhân viên có quyền không
+                            foreach (string quyen in quyenHanCanCheck)
+                            {
+                                if (quyenHanCuaNhanVien.Contains(quyen.Trim()))
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi
+                Logger.Instance().LogException(ex);
+                return false;
+            }
+        }
         // Phương thức cập nhật thông tin nhân viên
         public void UpdateNhanVien(NhanVien nhanVien)
         {

@@ -39,7 +39,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.frmNhaCungCap = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.Menu1.SuspendLayout();
             this.SuspendLayout();
@@ -110,7 +110,7 @@
             this.Menu1.Controls.Add(this.button4);
             this.Menu1.Controls.Add(this.button6);
             this.Menu1.Controls.Add(this.button5);
-            this.Menu1.Controls.Add(this.button3);
+            this.Menu1.Controls.Add(this.frmNhaCungCap);
             this.Menu1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Menu1.Location = new System.Drawing.Point(0, 87);
             this.Menu1.Name = "Menu1";
@@ -119,10 +119,10 @@
             // 
             // frmSanPham
             // 
-            this.frmSanPham.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frmSanPham.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frmSanPham.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_laptop_25;
             this.frmSanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.frmSanPham.Location = new System.Drawing.Point(436, 359);
+            this.frmSanPham.Location = new System.Drawing.Point(436, 288);
             this.frmSanPham.Name = "frmSanPham";
             this.frmSanPham.Size = new System.Drawing.Size(218, 134);
             this.frmSanPham.TabIndex = 0;
@@ -132,7 +132,7 @@
             // 
             // button7
             // 
-            this.button7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_spanner_25;
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.Location = new System.Drawing.Point(436, 73);
@@ -144,10 +144,10 @@
             // 
             // button4
             // 
-            this.button4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_create_order_25;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(76, 359);
+            this.button4.Location = new System.Drawing.Point(139, 288);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(218, 134);
             this.button4.TabIndex = 0;
@@ -156,10 +156,10 @@
             // 
             // button6
             // 
-            this.button6.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_chart_25;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(852, 64);
+            this.button6.Location = new System.Drawing.Point(716, 73);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(218, 134);
             this.button6.TabIndex = 0;
@@ -168,27 +168,28 @@
             // 
             // button5
             // 
-            this.button5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_employee_25;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(852, 347);
+            this.button5.Location = new System.Drawing.Point(716, 288);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(218, 134);
             this.button5.TabIndex = 0;
             this.button5.Text = "Nhân viên";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // frmNhaCungCap
             // 
-            this.button3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_supplier_25__1_;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(76, 64);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(218, 134);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Nhà cung cấp";
-            this.button3.UseVisualStyleBackColor = true;
+            this.frmNhaCungCap.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frmNhaCungCap.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_supplier_25__1_;
+            this.frmNhaCungCap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frmNhaCungCap.Location = new System.Drawing.Point(139, 73);
+            this.frmNhaCungCap.Name = "frmNhaCungCap";
+            this.frmNhaCungCap.Size = new System.Drawing.Size(218, 134);
+            this.frmNhaCungCap.TabIndex = 0;
+            this.frmNhaCungCap.Text = "Nhà cung cấp";
+            this.frmNhaCungCap.UseVisualStyleBackColor = true;
+            this.frmNhaCungCap.Click += new System.EventHandler(this.frmNhaCungCap_Click);
             // 
             // frmMain
             // 
@@ -216,7 +217,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button frmNhaCungCap;
         private System.Windows.Forms.Button frmSanPham;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;

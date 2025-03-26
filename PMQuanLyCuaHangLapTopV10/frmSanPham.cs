@@ -30,6 +30,10 @@ namespace PMQuanLyCuaHangLapTopV10
             InitDGV();
 
         }
+        private void ChecKAdmin()
+        {
+
+        }
         private void InitDGV()
         {
 
@@ -73,27 +77,73 @@ namespace PMQuanLyCuaHangLapTopV10
         public int maNCC;
         private void InitCB()
         {
-            // Lấy danh sách nhà cung cấp từ database
-            NhaCungCapDAO nhaCungCapDAO = new NhaCungCapDAO();
-            DataTable dtNhaCungCaps = nhaCungCapDAO.GetListNhaCungCap(); // GetList() trả về DataTable
-            if (dtNhaCungCaps.Rows.Count > 0)
+            try
             {
-                cbNCC.DataSource = dtNhaCungCaps; // Gán dữ liệu vào ComboBox
-                cbNCC.DisplayMember = "TenNCC"; // Hiển thị MaNCC
-                cbNCC.ValueMember = "MaNCC"; // Giá trị khi chọn MaNCC
-            }
-            else
-            {
-                cbNCC.DataSource = null; // Không có dữ liệu
-            }
-            cbNCC.SelectedIndexChanged += CbNCC_SelectedIndexChanged;
+                // Lấy danh sách nhà cung cấp từ database
+                NhaCungCapDAO nhaCungCapDAO = new NhaCungCapDAO();
+                DataTable dtNhaCungCaps = nhaCungCapDAO.GetListNhaCungCap();
 
+                if (dtNhaCungCaps != null && dtNhaCungCaps.Rows.Count > 0)
+                {
+                    // Tạo DataTable mới để custom hiển thị
+                    DataTable dtComboBox = new DataTable();
+                    dtComboBox.Columns.Add("Display", typeof(string));
+                    dtComboBox.Columns.Add("Value", typeof(string));
+
+                    // Thêm dòng mặc định
+                    dtComboBox.Rows.Add("Chọn nhà cung cấp", "");
+
+                    // Thêm dữ liệu từ DataTable gốc
+                    foreach (DataRow row in dtNhaCungCaps.Rows)
+                    {
+                        string maNCC = row["MaNCC"].ToString();
+                        string tenNCC = row["TenNCC"].ToString();
+                        dtComboBox.Rows.Add($"{maNCC} - {tenNCC}", maNCC);
+                    }
+
+                    // Gán nguồn dữ liệu
+                    cbNCC.DataSource = dtComboBox;
+                    cbNCC.DisplayMember = "Display";
+                    cbNCC.ValueMember = "Value";
+
+                    // Chọn mục đầu tiên
+                    cbNCC.SelectedIndex = 0;
+                }
+                else
+                {
+                    // Không có dữ liệu
+                    cbNCC.DataSource = null;
+                    cbNCC.Items.Add("Không có dữ liệu");
+                    cbNCC.SelectedIndex = 0;
+                }
+
+                // Đăng ký sự kiện
+                cbNCC.SelectedIndexChanged += CbNCC_SelectedIndexChanged;
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi
+                MessageBox.Show("Lỗi khi tải danh sách nhà cung cấp: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void CbNCC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbNCC.SelectedValue != null)
+            // Kiểm tra xem có item được chọn không
+            if (cbNCC.SelectedItem != null)
             {
-                int.TryParse(cbNCC.SelectedValue.ToString(), out maNCC);
+                // Lấy giá trị được chọn
+                DataRowView selectedRow = cbNCC.SelectedItem as DataRowView;
+                if (selectedRow != null)
+                {
+                    string selectedValue = selectedRow["Value"].ToString();
+
+                    // Nếu không phải mục "Chọn nhà cung cấp"
+                    if (!string.IsNullOrEmpty(selectedValue))
+                    {
+                        // Thực hiện các thao tác khi chọn nhà cung cấp
+                        // Ví dụ: load thông tin chi tiết, filter dữ liệu, v.v.
+                    }
+                }
             }
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -163,7 +213,7 @@ namespace PMQuanLyCuaHangLapTopV10
                 txtMoTaSP.Text,
                 decimal.TryParse(txtGiaBan.Text, out decimal giaBan) ? giaBan : 0,
                 decimal.TryParse(txtGiaNhap.Text, out decimal giaNhap) ? giaNhap : 0,
-                maNCC // Biến maNCC đã lấy từ ComboBox
+                int.Parse(cbNCC.Text) // Biến maNCC đã lấy từ ComboBox
             );
 
             if (result) 

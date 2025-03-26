@@ -37,7 +37,6 @@
             this.txtMoTaSP = new System.Windows.Forms.RichTextBox();
             this.ngaySinhNhat = new System.Windows.Forms.DateTimePicker();
             this.cbThoiGianBaoHanh = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cbNCC = new System.Windows.Forms.ComboBox();
             this.btnView = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -45,11 +44,12 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSoLuongSP = new System.Windows.Forms.TextBox();
+            this.txtGiaNhap = new System.Windows.Forms.TextBox();
             this.txtGiaBan = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,8 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtGiaNhap = new System.Windows.Forms.TextBox();
             this.options.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -103,7 +101,6 @@
             this.panel1.Controls.Add(this.txtMoTaSP);
             this.panel1.Controls.Add(this.ngaySinhNhat);
             this.panel1.Controls.Add(this.cbThoiGianBaoHanh);
-            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.cbNCC);
             this.panel1.Controls.Add(this.btnView);
             this.panel1.Controls.Add(this.btnUpdate);
@@ -115,7 +112,6 @@
             this.panel1.Controls.Add(this.txtGiaBan);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label3);
@@ -161,18 +157,6 @@
             this.cbThoiGianBaoHanh.Name = "cbThoiGianBaoHanh";
             this.cbThoiGianBaoHanh.Size = new System.Drawing.Size(141, 30);
             this.cbThoiGianBaoHanh.TabIndex = 6;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Bảo hành chính hãng"});
-            this.comboBox1.Location = new System.Drawing.Point(180, 359);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(215, 30);
-            this.comboBox1.TabIndex = 6;
             // 
             // cbNCC
             // 
@@ -243,6 +227,14 @@
             this.txtSoLuongSP.Size = new System.Drawing.Size(71, 29);
             this.txtSoLuongSP.TabIndex = 4;
             // 
+            // txtGiaNhap
+            // 
+            this.txtGiaNhap.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGiaNhap.Location = new System.Drawing.Point(180, 152);
+            this.txtGiaNhap.Name = "txtGiaNhap";
+            this.txtGiaNhap.Size = new System.Drawing.Size(215, 29);
+            this.txtGiaNhap.TabIndex = 4;
+            // 
             // txtGiaBan
             // 
             this.txtGiaBan.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -271,16 +263,6 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Thời gian bảo hành:";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(16, 359);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(137, 21);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Loại bảo hành:";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -291,15 +273,25 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Nhà cung cấp :";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(20, 156);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(92, 21);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Giá nhập:";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(20, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 21);
+            this.label3.Size = new System.Drawing.Size(75, 21);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Đơn giá:";
+            this.label3.Text = "Già bán";
             // 
             // txtName
             // 
@@ -374,24 +366,6 @@
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(20, 156);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(92, 21);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Giá nhập:";
-            // 
-            // txtGiaNhap
-            // 
-            this.txtGiaNhap.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGiaNhap.Location = new System.Drawing.Point(180, 152);
-            this.txtGiaNhap.Name = "txtGiaNhap";
-            this.txtGiaNhap.Size = new System.Drawing.Size(215, 29);
-            this.txtGiaNhap.TabIndex = 4;
-            // 
             // frmSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -438,9 +412,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSoLuongSP;
         private System.Windows.Forms.ComboBox cbThoiGianBaoHanh;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RichTextBox txtMoTaSP;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;

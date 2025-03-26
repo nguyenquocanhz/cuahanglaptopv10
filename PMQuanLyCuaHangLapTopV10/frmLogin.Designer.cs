@@ -42,7 +42,7 @@
             this.btnExit = new System.Windows.Forms.Label();
             this.pnlDragBar = new System.Windows.Forms.Panel();
             this.btnClosed = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.frmQMK = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlDragBar.SuspendLayout();
@@ -198,16 +198,17 @@
             this.btnClosed.Text = "X";
             this.btnClosed.Click += new System.EventHandler(this.btnClosed_Click);
             // 
-            // linkLabel1
+            // frmQMK
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.linkLabel1.Location = new System.Drawing.Point(787, 416);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(147, 24);
-            this.linkLabel1.TabIndex = 7;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Quên mật khẩu";
+            this.frmQMK.AutoSize = true;
+            this.frmQMK.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.frmQMK.Location = new System.Drawing.Point(787, 416);
+            this.frmQMK.Name = "frmQMK";
+            this.frmQMK.Size = new System.Drawing.Size(147, 24);
+            this.frmQMK.TabIndex = 7;
+            this.frmQMK.TabStop = true;
+            this.frmQMK.Text = "Quên mật khẩu";
+            this.frmQMK.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.frmQMK_LinkClicked);
             // 
             // frmLogin
             // 
@@ -215,7 +216,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(983, 675);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.frmQMK);
             this.Controls.Add(this.pnlDragBar);
             this.Controls.Add(this.checkShowPwd);
             this.Controls.Add(this.btnLogin);
@@ -258,6 +259,6 @@
         private System.Windows.Forms.Label btnExit;
         private System.Windows.Forms.Panel pnlDragBar;
         private System.Windows.Forms.Label btnClosed;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel frmQMK;
     }
 }

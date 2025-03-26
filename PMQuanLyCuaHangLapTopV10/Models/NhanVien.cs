@@ -21,7 +21,7 @@ namespace PMQuanLyCuaHangLapTopV10.Models
         public string CCCD { get; set; }
         public NhanVien() { }
 
-        public NhanVien(string maNV, string hoTenNV, string gioiTinh, DateTime? ngaySinh, string soDienThoai, string password, string quyenHan, string chucDanh, string diaChiNV)
+        public NhanVien(string maNV, string hoTenNV, string gioiTinh, DateTime? ngaySinh, string soDienThoai, string password, string quyenHan, string chucDanh, string diaChiNV, string maCCCD)
         {
             MaNV = maNV;
             HoTenNV = hoTenNV;
@@ -32,6 +32,7 @@ namespace PMQuanLyCuaHangLapTopV10.Models
             QuyenHan = quyenHan;
             ChucDanh = chucDanh;
             DiaChiNV = diaChiNV;
+            CCCD = maCCCD;
         }
     }
 }
