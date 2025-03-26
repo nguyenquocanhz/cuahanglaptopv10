@@ -166,10 +166,5 @@ namespace PMQuanLyCuaHangLapTopV10
         {
 
         }
-
-        private void frmQMK_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
     }
 }

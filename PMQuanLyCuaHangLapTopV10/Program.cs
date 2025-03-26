@@ -16,7 +16,7 @@ namespace PMQuanLyCuaHangLapTopV10
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmQMK());
         }
     }
 }
