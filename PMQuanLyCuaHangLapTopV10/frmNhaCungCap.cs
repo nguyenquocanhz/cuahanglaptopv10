@@ -62,13 +62,13 @@ namespace PMQuanLyCuaHangLapTopV10
         private void LoadData()
         {
             NhaCungCapDAO nhaCungCapDAO = new NhaCungCapDAO();
-            listNhaCungCap = nhaCungCapDAO.GetListNhaCungCap();
+            listNhaCungCap = nhaCungCapDAO.GetListNhaCungCapDatatable();
 
             dgvNhaCungCap.DataSource = listNhaCungCap;
             dgvNhaCungCap.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNhaCungCap.Columns["MaNCC"].HeaderText = "Mã NCC";
             dgvNhaCungCap.Columns["TenNCC"].HeaderText = "Tên NCC";
-            dgvNhaCungCap.Columns["SoDienThoai"].HeaderText = "Số Điện Thoại";
+            dgvNhaCungCap.Columns["soDienThoaiNCC"].HeaderText = "Số Điện Thoại";
         }
 
         private void btnView_Click(object sender, EventArgs e)
@@ -80,7 +80,7 @@ namespace PMQuanLyCuaHangLapTopV10
         {
             txtMaNCC.Text = dgvNhaCungCap.Rows[e.RowIndex].Cells["MaNCC"].Value.ToString();
             txtTenNCC.Text = dgvNhaCungCap.Rows[e.RowIndex].Cells["TenNCC"].Value.ToString();
-            txtSdtNCC.Text = dgvNhaCungCap.Rows[e.RowIndex].Cells["SoDienThoai"].Value.ToString();
+            txtSdtNCC.Text = dgvNhaCungCap.Rows[e.RowIndex].Cells["soDienThoaiNCC"].Value.ToString();
         }
     }
 }

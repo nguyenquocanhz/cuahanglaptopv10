@@ -22,6 +22,11 @@ namespace PMQuanLyCuaHangLapTopV10
 
         private void btnVerify_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txtUsername.Text))
+            {
+                MessageBox.Show("⚠️ Số điện thoại không được để trống !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (!nhanVienDAO.CheckPhoneNumberExists(txtUsername.Text.Trim()))
             {
@@ -29,8 +34,38 @@ namespace PMQuanLyCuaHangLapTopV10
             }
             else
             {
+                txtUsername.ReadOnly = true;
                 panel1.Visible = true;
-                MessageBox.Show("❌ Không thể kết nối đến cơ sở dữ liệu! Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtUsername.Text) || String.IsNullOrEmpty(txtConfirmPassword.Text) || String.IsNullOrEmpty(txtNewPassword.Text)) 
+            {
+                MessageBox.Show("⚠️ Vui lòng điền đủ thông tin !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (txtConfirmPassword.Text.Trim() != txtNewPassword.Text.Trim())
+            {
+                MessageBox.Show("⚠️ Mật khẩu không khớp   !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            bool isUpdate = nhanVienDAO.UpdateMK(txtUsername.Text.Trim(), txtNewPassword.Text.Trim());
+            if (isUpdate)
+            {
+                MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else 
+            {
+                MessageBox.Show("Đổi mật khẩu thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
     }

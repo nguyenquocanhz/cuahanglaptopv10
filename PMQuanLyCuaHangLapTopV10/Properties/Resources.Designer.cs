@@ -153,6 +153,16 @@ namespace PMQuanLyCuaHangLapTopV10.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_close_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-close-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_create_order_25 {
             get {
                 object obj = ResourceManager.GetObject("icons8-create-order-25", resourceCulture);
@@ -226,6 +236,26 @@ namespace PMQuanLyCuaHangLapTopV10.Properties {
         internal static System.Drawing.Bitmap icons8_product_25 {
             get {
                 object obj = ResourceManager.GetObject("icons8-product-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_save_as_25 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-save-as-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_save_as_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-save-as-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

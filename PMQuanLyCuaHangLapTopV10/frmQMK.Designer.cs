@@ -52,7 +52,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
             this.lblTitle.Location = new System.Drawing.Point(119, 27);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(199, 27);
+            this.lblTitle.Size = new System.Drawing.Size(255, 34);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "QUÊN MẬT KHẨU";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -63,7 +63,7 @@
             this.lblUsername.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.Location = new System.Drawing.Point(30, 92);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(103, 18);
+            this.lblUsername.Size = new System.Drawing.Size(128, 22);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "Số Điện Thoại:";
             // 
@@ -72,7 +72,7 @@
             this.txtUsername.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(27, 117);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(314, 25);
+            this.txtUsername.Size = new System.Drawing.Size(314, 29);
             this.txtUsername.TabIndex = 0;
             // 
             // lblNewPassword
@@ -81,7 +81,7 @@
             this.lblNewPassword.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewPassword.Location = new System.Drawing.Point(15, 15);
             this.lblNewPassword.Name = "lblNewPassword";
-            this.lblNewPassword.Size = new System.Drawing.Size(102, 18);
+            this.lblNewPassword.Size = new System.Drawing.Size(124, 22);
             this.lblNewPassword.TabIndex = 5;
             this.lblNewPassword.Text = "Mật khẩu mới:";
             // 
@@ -91,7 +91,7 @@
             this.txtNewPassword.Location = new System.Drawing.Point(15, 40);
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.PasswordChar = '*';
-            this.txtNewPassword.Size = new System.Drawing.Size(314, 25);
+            this.txtNewPassword.Size = new System.Drawing.Size(314, 29);
             this.txtNewPassword.TabIndex = 0;
             // 
             // lblConfirmPassword
@@ -100,7 +100,7 @@
             this.lblConfirmPassword.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfirmPassword.Location = new System.Drawing.Point(15, 82);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
-            this.lblConfirmPassword.Size = new System.Drawing.Size(141, 18);
+            this.lblConfirmPassword.Size = new System.Drawing.Size(168, 22);
             this.lblConfirmPassword.TabIndex = 7;
             this.lblConfirmPassword.Text = "Xác nhận mật khẩu:";
             // 
@@ -110,7 +110,7 @@
             this.txtConfirmPassword.Location = new System.Drawing.Point(15, 107);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
-            this.txtConfirmPassword.Size = new System.Drawing.Size(314, 25);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(314, 29);
             this.txtConfirmPassword.TabIndex = 1;
             // 
             // btnReset
@@ -126,6 +126,7 @@
             this.btnReset.TabIndex = 3;
             this.btnReset.Text = "Đặt lại mật khẩu";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnCancel
             // 
@@ -139,6 +140,7 @@
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel1
             // 
@@ -160,7 +162,7 @@
             this.chkShowPassword.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkShowPassword.Location = new System.Drawing.Point(15, 142);
             this.chkShowPassword.Name = "chkShowPassword";
-            this.chkShowPassword.Size = new System.Drawing.Size(115, 21);
+            this.chkShowPassword.Size = new System.Drawing.Size(139, 25);
             this.chkShowPassword.TabIndex = 2;
             this.chkShowPassword.Text = "Hiện mật khẩu";
             this.chkShowPassword.UseVisualStyleBackColor = true;
@@ -201,7 +203,7 @@
             // 
             // frmQMK
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 531);
             this.Controls.Add(this.panel2);

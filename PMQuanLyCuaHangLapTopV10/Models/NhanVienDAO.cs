@@ -79,54 +79,45 @@ namespace PMQuanLyCuaHangLapTopV10.Models
         {
             DataTable nhanViens = new DataTable();
 
-            // Thêm cột vào DataTable
-            nhanViens.Columns.Add("MaNV", typeof(string));
-            nhanViens.Columns.Add("HoTenNV", typeof(string));
-            nhanViens.Columns.Add("GioiTinh", typeof(string));
-            nhanViens.Columns.Add("NgaySinh", typeof(DateTime));
-            nhanViens.Columns.Add("SoDienThoai", typeof(string));
-            nhanViens.Columns.Add("Password", typeof(string));
-            nhanViens.Columns.Add("QuyenHan", typeof(string));
-            nhanViens.Columns.Add("ChucDanh", typeof(string));
-            nhanViens.Columns.Add("DiaChiNV", typeof(string));
-
-            using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
+            try
             {
-                string query = "SELECT maNV, hoTenNV, gioiTinh, ngaySinh, soDienThoai, password, quyenHan, chucDanh, DiaChiNV FROM NhanVien";
-                SqlCommand command = new SqlCommand(query, connection);
-
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conn = new SqlConnection(DBconnection.strConnection))
                 {
-                    nhanViens.Rows.Add(
-                        reader["maNV"].ToString(),
-                        reader["hoTenNV"].ToString(),
-                        reader["gioiTinh"].ToString(),
-                        reader["ngaySinh"] == DBNull.Value ? (object)DBNull.Value : (DateTime)reader["ngaySinh"],
-                        reader["soDienThoai"].ToString(),
-                        reader["password"].ToString(),
-                        reader["quyenHan"].ToString(),
-                        reader["chucDanh"].ToString(),
-                        reader["DiaChiNV"].ToString()
-                    );
+                    conn.Open(); // Ensure the connection is opened before executing the command.
+
+                    string sql = "SELECT maNV, hoTenNV, gioiTinh, ngaySinh, soDienThoai, quyenHan, chucDanh, DiaChiNV , cccd FROM NhanVien";
+                    using (SqlCommand query = new SqlCommand(sql, conn))
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter(query);
+                        adapter.Fill(nhanViens);
+                    }
                 }
-                reader.Close();
+
+                if (nhanViens.Rows.Count == 0)
+                {
+                    // Optionally log or handle empty results.
+                    Console.WriteLine("Không có dữ liệu.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions gracefully.
+                Console.WriteLine($"Error: {ex.Message}");
             }
 
-            return nhanViens;
+            return nhanViens; // Return the populated DataTable (or empty if no rows).
         }
 
 
         // Phương thức thêm nhân viên mới
-        public void AddNhanVien(NhanVien nhanVien)
+        public bool AddNhanVien(NhanVien nhanVien)
         {
             using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
             {
-                string query = "INSERT INTO NhanVien (maNV, hoTenNV, gioiTinh, ngaySinh, soDienThoai, password, quyenHan, chucDanh) " +
-                               "VALUES (@MaNV, @HoTenNV, @GioiTinh, @NgaySinh, @SoDienThoai, @Password, @QuyenHan, @ChucDanh)";
+                string query = "INSERT INTO NhanVien (maNV, hoTenNV, gioiTinh, ngaySinh, soDienThoai, password, quyenHan, chucDanh, diaChiNV , cccd) " +
+                               "VALUES (@MaNV, @HoTenNV, @GioiTinh, @NgaySinh, @SoDienThoai, @Password, @QuyenHan, @ChucDanh, @DiaChiNV , @CCCD)";
                 SqlCommand command = new SqlCommand(query, connection);
+
                 command.Parameters.AddWithValue("@MaNV", nhanVien.MaNV);
                 command.Parameters.AddWithValue("@HoTenNV", nhanVien.HoTenNV);
                 command.Parameters.AddWithValue("@GioiTinh", nhanVien.GioiTinh);
@@ -136,11 +127,25 @@ namespace PMQuanLyCuaHangLapTopV10.Models
                 command.Parameters.AddWithValue("@QuyenHan", nhanVien.QuyenHan);
                 command.Parameters.AddWithValue("@ChucDanh", nhanVien.ChucDanh);
                 command.Parameters.AddWithValue("@DiaChiNV", nhanVien.DiaChiNV);
+                command.Parameters.AddWithValue("@CCCD", nhanVien.CCCD);
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    // Kiểm tra số dòng bị ảnh hưởng
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    // Ghi log lỗi nếu cần
+                    Console.WriteLine($"Lỗi khi thêm nhân viên: {ex.Message}");
+                    return false;
+                }
             }
         }
+
         public bool CheckQuyenHanNhanVien(string maNV, string quyenHanCanKiemTra)
         {
             try
@@ -195,28 +200,121 @@ namespace PMQuanLyCuaHangLapTopV10.Models
             }
         }
         // Phương thức cập nhật thông tin nhân viên
-        public void UpdateNhanVien(NhanVien nhanVien)
+        public bool UpdateNhanVien(NhanVien nhanVien)
         {
-
-            // tự động đóng ngắt connection với using
-            using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
+            try
             {
-                string query = "UPDATE NhanVien SET hoTenNV = @HoTenNV, gioiTinh = @GioiTinh, ngaySinh = @NgaySinh, " +
-                               "soDienThoai = @SoDienThoai, password = @Password, quyenHan = @QuyenHan, chucDanh = @ChucDanh " +
-                               "WHERE maNV = @MaNV";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MaNV", nhanVien.MaNV);
-                command.Parameters.AddWithValue("@HoTenNV", nhanVien.HoTenNV);
-                command.Parameters.AddWithValue("@GioiTinh", nhanVien.GioiTinh);
-                command.Parameters.AddWithValue("@NgaySinh", nhanVien.NgaySinh ?? (object)DBNull.Value);
-                command.Parameters.AddWithValue("@SoDienThoai", nhanVien.SoDienThoai);
-                command.Parameters.AddWithValue("@Password", nhanVien.Password);
-                command.Parameters.AddWithValue("@QuyenHan", nhanVien.QuyenHan);
-                command.Parameters.AddWithValue("@ChucDanh", nhanVien.ChucDanh);
-                command.Parameters.AddWithValue("@DiaChiNV", nhanVien.DiaChiNV);
+                using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
+                {
+                    // Khởi tạo câu lệnh UPDATE động
+                    List<string> updateClauses = new List<string>();
+                    SqlCommand command = new SqlCommand();
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                    // Kiểm tra từng trường và thêm vào danh sách update nếu không null hoặc empty
+                    if (!string.IsNullOrWhiteSpace(nhanVien.HoTenNV))
+                    {
+                        updateClauses.Add("hoTenNV = @HoTenNV");
+                        command.Parameters.AddWithValue("@HoTenNV", nhanVien.HoTenNV);
+                    }
+                    if (!string.IsNullOrWhiteSpace(nhanVien.GioiTinh))
+                    {
+                        updateClauses.Add("gioiTinh = @GioiTinh");
+                        command.Parameters.AddWithValue("@GioiTinh", nhanVien.GioiTinh);
+                    }
+                    if (nhanVien.NgaySinh.HasValue)
+                    {
+                        updateClauses.Add("ngaySinh = @NgaySinh");
+                        command.Parameters.AddWithValue("@NgaySinh", nhanVien.NgaySinh.Value);
+                    }
+                    if (!string.IsNullOrWhiteSpace(nhanVien.SoDienThoai))
+                    {
+                        updateClauses.Add("soDienThoai = @SoDienThoai");
+                        command.Parameters.AddWithValue("@SoDienThoai", nhanVien.SoDienThoai);
+                    }
+                    if (!string.IsNullOrWhiteSpace(nhanVien.Password))
+                    {
+                        updateClauses.Add("password = @Password");
+                        command.Parameters.AddWithValue("@Password", nhanVien.Password);
+                    }
+                    if (!string.IsNullOrWhiteSpace(nhanVien.QuyenHan))
+                    {
+                        updateClauses.Add("quyenHan = @QuyenHan");
+                        command.Parameters.AddWithValue("@QuyenHan", nhanVien.QuyenHan);
+                    }
+                    if (!string.IsNullOrWhiteSpace(nhanVien.ChucDanh))
+                    {
+                        updateClauses.Add("chucDanh = @ChucDanh");
+                        command.Parameters.AddWithValue("@ChucDanh", nhanVien.ChucDanh);
+                    }
+                    if (!string.IsNullOrWhiteSpace(nhanVien.DiaChiNV))
+                    {
+                        updateClauses.Add("DiaChiNV = @DiaChiNV");
+                        command.Parameters.AddWithValue("@DiaChiNV", nhanVien.DiaChiNV);
+                    }
+                    if (!string.IsNullOrWhiteSpace(nhanVien.CCCD))
+                    {
+                        updateClauses.Add("CCCD = @CCCD");
+                        command.Parameters.AddWithValue("@CCCD", nhanVien.CCCD);
+                    }
+
+                    // Nếu không có trường nào để cập nhật
+                    if (updateClauses.Count == 0)
+                    {
+                        return false;
+                    }
+
+                    // Xây dựng câu truy vấn UPDATE
+                    string query = $"UPDATE NhanVien SET {string.Join(", ", updateClauses)} WHERE maNV = @MaNV";
+                    command.CommandText = query;
+                    command.Connection = connection;
+
+                    // Thêm tham số mã nhân viên
+                    command.Parameters.AddWithValue("@MaNV", nhanVien.MaNV);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    return rowsAffected > 0; // Trả về true nếu cập nhật thành công
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
+        }
+
+        public bool UpdateMK(string username, string newpass)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
+                {
+                    string query = "UPDATE NhanVien SET password = @Password " +
+                                   "WHERE maNV = @MaNV";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@MaNV", username);
+                        command.Parameters.AddWithValue("@Password", newpass);
+
+                        connection.Open();
+
+                        // Trả về số dòng bị ảnh hưởng
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        // Nếu có ít nhất 1 dòng bị update thì trả về true
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi
+                Logger.Instance().LogException(ex);
+
+                // Trả về false nếu có lỗi
+                return false;
             }
         }
 

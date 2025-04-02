@@ -37,8 +37,8 @@
             this.frmSanPham = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.frmThongKeDoanhSo = new System.Windows.Forms.Button();
+            this.frmNhanVien = new System.Windows.Forms.Button();
             this.frmNhaCungCap = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.Menu1.SuspendLayout();
@@ -108,8 +108,8 @@
             this.Menu1.Controls.Add(this.frmSanPham);
             this.Menu1.Controls.Add(this.button7);
             this.Menu1.Controls.Add(this.button4);
-            this.Menu1.Controls.Add(this.button6);
-            this.Menu1.Controls.Add(this.button5);
+            this.Menu1.Controls.Add(this.frmThongKeDoanhSo);
+            this.Menu1.Controls.Add(this.frmNhanVien);
             this.Menu1.Controls.Add(this.frmNhaCungCap);
             this.Menu1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Menu1.Location = new System.Drawing.Point(0, 87);
@@ -154,29 +154,31 @@
             this.button4.Text = "Hóa đơn";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // frmThongKeDoanhSo
             // 
-            this.button6.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_chart_25;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(716, 73);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(218, 134);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Thống kê";
-            this.button6.UseVisualStyleBackColor = true;
+            this.frmThongKeDoanhSo.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frmThongKeDoanhSo.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_chart_25;
+            this.frmThongKeDoanhSo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frmThongKeDoanhSo.Location = new System.Drawing.Point(716, 73);
+            this.frmThongKeDoanhSo.Name = "frmThongKeDoanhSo";
+            this.frmThongKeDoanhSo.Size = new System.Drawing.Size(218, 134);
+            this.frmThongKeDoanhSo.TabIndex = 0;
+            this.frmThongKeDoanhSo.Text = "Thống kê";
+            this.frmThongKeDoanhSo.UseVisualStyleBackColor = true;
+            this.frmThongKeDoanhSo.Click += new System.EventHandler(this.frmThongKeDoanhSo_Click);
             // 
-            // button5
+            // frmNhanVien
             // 
-            this.button5.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_employee_25;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(716, 288);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(218, 134);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Nhân viên";
-            this.button5.UseVisualStyleBackColor = true;
+            this.frmNhanVien.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frmNhanVien.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_employee_25;
+            this.frmNhanVien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.frmNhanVien.Location = new System.Drawing.Point(716, 288);
+            this.frmNhanVien.Name = "frmNhanVien";
+            this.frmNhanVien.Size = new System.Drawing.Size(218, 134);
+            this.frmNhanVien.TabIndex = 0;
+            this.frmNhanVien.Text = "Nhân viên";
+            this.frmNhanVien.UseVisualStyleBackColor = true;
+            this.frmNhanVien.Click += new System.EventHandler(this.frmNhanVien_Click);
             // 
             // frmNhaCungCap
             // 
@@ -219,8 +221,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button frmNhaCungCap;
         private System.Windows.Forms.Button frmSanPham;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button frmNhanVien;
+        private System.Windows.Forms.Button frmThongKeDoanhSo;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel Menu1;
         private System.Windows.Forms.Label label3;

@@ -30,6 +30,9 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtMaKH = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -40,9 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvListNhanVien = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -79,6 +79,41 @@
             this.panel3.Size = new System.Drawing.Size(946, 276);
             this.panel3.TabIndex = 3;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.delete__1_;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(214, 156);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(165, 45);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Xóa";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.pen__1_;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(757, 67);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(142, 33);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Tìm";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.pen__1_;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(30, 156);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(141, 45);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Sửa";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // txtEmail
             // 
@@ -178,41 +213,6 @@
             this.dgvListNhanVien.Size = new System.Drawing.Size(946, 333);
             this.dgvListNhanVien.TabIndex = 0;
             this.dgvListNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListNhanVien_CellClick);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.delete__1_;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(214, 156);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(165, 45);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Xóa";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.pen__1_;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(30, 156);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(141, 45);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Sửa";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.pen__1_;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(792, 63);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 33);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Tìm";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmKhachHang
             // 

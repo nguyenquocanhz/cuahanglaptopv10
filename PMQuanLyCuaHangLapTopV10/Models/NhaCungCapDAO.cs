@@ -93,5 +93,39 @@ namespace PMQuanLyCuaHangLapTopV10.Models
             return nhaCungCap;
 
         }
+        // Lấy danh sách nhà cung cấp với Sql Connection . SqlCommand , SqlAdapter return DataTable
+        public DataTable GetListNhaCungCapDatatable()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DBconnection.strConnection))
+                {
+                    conn.Open(); // Ensure the connection is opened before executing the command.
+
+                    string sql = "SELECT * FROM NhaCungCap";
+                    using (SqlCommand query = new SqlCommand(sql, conn))
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter(query);
+                        adapter.Fill(dt);
+                    }
+                }
+
+                if (dt.Rows.Count == 0)
+                {
+                    // Optionally log or handle empty results.
+                    Console.WriteLine("Không có dữ liệu.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions gracefully.
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            return dt; // Return the populated DataTable (or empty if no rows).
+        }
+
     }
 }

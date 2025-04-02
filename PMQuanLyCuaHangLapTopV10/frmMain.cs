@@ -143,5 +143,17 @@ namespace PMQuanLyCuaHangLapTopV10
             frmNhaCungCap frmNhaCungCap = new frmNhaCungCap();
             frmNhaCungCap.ShowDialog();
         }
+
+        private void frmNhanVien_Click(object sender, EventArgs e)
+        {
+            frmNhanVien frmNhanVien = new frmNhanVien();
+            frmNhanVien.ShowDialog();
+        }
+
+        private void frmThongKeDoanhSo_Click(object sender, EventArgs e)
+        {
+            frmThongKeDoanhSo frmThongKeDoanhSo = new frmThongKeDoanhSo();
+            frmThongKeDoanhSo.ShowDialog();
+        }
     }
 }
