@@ -16,7 +16,11 @@ namespace PMQuanLyCuaHangLapTopV10
         {
             InitializeComponent();
         }
+        public frmBaoHanh(string[] jsonData)
+        {
+            InitializeComponent();
 
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 

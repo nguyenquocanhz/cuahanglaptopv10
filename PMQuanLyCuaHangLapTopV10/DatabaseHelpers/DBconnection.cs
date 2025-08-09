@@ -9,7 +9,10 @@ namespace PMQuanLyCuaHangLapTopV10.DatabaseHelpers
 {
     public static class DBconnection
     {
-        public static string strConnection = "Data Source=DESKTOP-PVG090N;Initial Catalog=laptopStoreDB;Integrated Security=True;TrustServerCertificate=True";
+
+        // read app.config
+
+        public static string strConnection = "Data Source=.;Initial Catalog=laptopStoreDB;User ID=nqa01;Password=anhanh123";
 
     }
 }

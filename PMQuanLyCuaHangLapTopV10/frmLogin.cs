@@ -11,16 +11,13 @@ namespace PMQuanLyCuaHangLapTopV10
         private Color originalButtonColor;
         private bool isDragging = false;        // Flag to track if the form is being dragged
         private Point offset;                // Offset from the mouse click to the form's top-left corner
-        private Color originalExitButtonForeColor; // Store original exit button forcolor for hover effect
-        private Color hoverExitButtonForeColor = Color.White; // Hover color for exit button
         public DbHelpers db = DbHelpers.Instance();
 
 
         public frmLogin()
         {
             InitializeComponent();
-            originalButtonColor = btnLogin.BackColor;
-            originalExitButtonForeColor = btnExit.ForeColor; // Store original exit button color
+            originalButtonColor = btnLogin.BackColor; // Assign the initial color of the button
 
         }
 
@@ -31,21 +28,9 @@ namespace PMQuanLyCuaHangLapTopV10
                 MessageBox.Show("Không thể kết nối đến cơ sở dữ liệu", "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            formFadeInTimer.Start();
             txtAcc.Focus();
         }
 
-        private void formFadeInTimer_Tick(object sender, EventArgs e)
-        {
-            if (Opacity < 1)
-            {
-                Opacity += 0.05;
-            }
-            else
-            {
-                formFadeInTimer.Stop();
-            }
-        }
 
         private void btnLogin_MouseEnter(object sender, EventArgs e)
         {
@@ -69,12 +54,10 @@ namespace PMQuanLyCuaHangLapTopV10
 
         private void btnExit_MouseEnter(object sender, EventArgs e)
         {
-            btnExit.ForeColor = hoverExitButtonForeColor; // Change color on hover
         }
 
         private void btnExit_MouseLeave(object sender, EventArgs e)
         {
-            btnExit.ForeColor = originalExitButtonForeColor; // Restore original color
         }
 
         // --- Form Dragging Code ---
@@ -120,12 +103,31 @@ namespace PMQuanLyCuaHangLapTopV10
                 SessionManager.IsLoggedIn = true;
                 SessionManager.Username = nv.HoTenNV;
                 SessionManager.Role = nv.QuyenHan;
-
+                SessionManager.MaNV = nv.MaNV;
+                SessionManager.sodt = nv.SoDienThoai;
+                SessionManager.ChucDanh = nv.ChucDanh;
                 // Đăng nhập thành công
-                MessageBox.Show("🔓 Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                frmMain frmMain = new frmMain();
-                this.Hide();
-                frmMain.Show();
+                //MessageBox.Show("🔓 Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // phân quyền truy cập giao diện
+                if (SessionManager.Role == "Admin")
+                {
+                    frmAdmin frmAdmin = new frmAdmin();
+                    this.Hide();
+                    frmAdmin.Show();
+                    frmAdmin.WindowState = FormWindowState.Maximized;
+                }
+                else if (SessionManager.Role == "Staff")
+                {
+
+                    frmDashboardEmployee frmDashboardEmployee = new frmDashboardEmployee();
+                    this.Hide();
+                    frmDashboardEmployee.Show();
+                }
+                else
+                {
+                    MessageBox.Show("❌ Không thể xác định quyền truy cập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                  
 
 
             }

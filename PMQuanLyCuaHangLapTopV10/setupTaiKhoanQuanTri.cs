@@ -13,7 +13,7 @@ namespace PMQuanLyCuaHangLapTopV10
 {
     public partial class setupTaiKhoanQuanTri: Form
     {
-        private string conn = "Data Source=DESKTOP-PVG090N;Initial Catalog=laptopStoreDB;Integrated Security=True;Encrypt=true;TrustServerCertificate=true";
+        //private string conn = "Data Source=DESKTOP-PVG090N;Initial Catalog=laptopStoreDB;Integrated Security=True;Encrypt=true;TrustServerCertificate=true";
         public setupTaiKhoanQuanTri()
         {
             InitializeComponent();

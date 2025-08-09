@@ -53,7 +53,7 @@
             // 
             this.lblTenCongTy.AutoSize = true;
             this.lblTenCongTy.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenCongTy.Location = new System.Drawing.Point(16, 11);
+            this.lblTenCongTy.Location = new System.Drawing.Point(279, 127);
             this.lblTenCongTy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTenCongTy.Name = "lblTenCongTy";
             this.lblTenCongTy.Size = new System.Drawing.Size(125, 21);
@@ -64,7 +64,7 @@
             // 
             this.lblDiaChi.AutoSize = true;
             this.lblDiaChi.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiaChi.Location = new System.Drawing.Point(16, 43);
+            this.lblDiaChi.Location = new System.Drawing.Point(279, 159);
             this.lblDiaChi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDiaChi.Name = "lblDiaChi";
             this.lblDiaChi.Size = new System.Drawing.Size(89, 21);
@@ -75,7 +75,7 @@
             // 
             this.lblDienThoai.AutoSize = true;
             this.lblDienThoai.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDienThoai.Location = new System.Drawing.Point(16, 75);
+            this.lblDienThoai.Location = new System.Drawing.Point(279, 191);
             this.lblDienThoai.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDienThoai.Name = "lblDienThoai";
             this.lblDienThoai.Size = new System.Drawing.Size(114, 21);
@@ -86,7 +86,7 @@
             // 
             this.lblMaSoThue.AutoSize = true;
             this.lblMaSoThue.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaSoThue.Location = new System.Drawing.Point(16, 107);
+            this.lblMaSoThue.Location = new System.Drawing.Point(279, 223);
             this.lblMaSoThue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMaSoThue.Name = "lblMaSoThue";
             this.lblMaSoThue.Size = new System.Drawing.Size(92, 21);
@@ -97,7 +97,7 @@
             // 
             this.lblSoTaiKhoan.AutoSize = true;
             this.lblSoTaiKhoan.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoTaiKhoan.Location = new System.Drawing.Point(16, 139);
+            this.lblSoTaiKhoan.Location = new System.Drawing.Point(279, 255);
             this.lblSoTaiKhoan.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSoTaiKhoan.Name = "lblSoTaiKhoan";
             this.lblSoTaiKhoan.Size = new System.Drawing.Size(101, 21);
@@ -108,7 +108,7 @@
             // 
             this.lblTenNganHang.AutoSize = true;
             this.lblTenNganHang.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenNganHang.Location = new System.Drawing.Point(16, 171);
+            this.lblTenNganHang.Location = new System.Drawing.Point(279, 287);
             this.lblTenNganHang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTenNganHang.Name = "lblTenNganHang";
             this.lblTenNganHang.Size = new System.Drawing.Size(120, 21);
@@ -119,7 +119,7 @@
             // 
             this.lblFontChu.AutoSize = true;
             this.lblFontChu.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFontChu.Location = new System.Drawing.Point(16, 203);
+            this.lblFontChu.Location = new System.Drawing.Point(279, 319);
             this.lblFontChu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFontChu.Name = "lblFontChu";
             this.lblFontChu.Size = new System.Drawing.Size(75, 21);
@@ -129,7 +129,7 @@
             // lblSize
             // 
             this.lblSize.AutoSize = true;
-            this.lblSize.Location = new System.Drawing.Point(333, 203);
+            this.lblSize.Location = new System.Drawing.Point(596, 319);
             this.lblSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(33, 16);
@@ -138,56 +138,56 @@
             // 
             // txtTenCongTy
             // 
-            this.txtTenCongTy.Location = new System.Drawing.Point(139, 7);
-            this.txtTenCongTy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenCongTy.Location = new System.Drawing.Point(402, 123);
+            this.txtTenCongTy.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenCongTy.Name = "txtTenCongTy";
             this.txtTenCongTy.Size = new System.Drawing.Size(399, 22);
             this.txtTenCongTy.TabIndex = 8;
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(139, 39);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiaChi.Location = new System.Drawing.Point(402, 155);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(399, 22);
             this.txtDiaChi.TabIndex = 9;
             // 
             // txtDienThoai
             // 
-            this.txtDienThoai.Location = new System.Drawing.Point(139, 71);
-            this.txtDienThoai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDienThoai.Location = new System.Drawing.Point(402, 187);
+            this.txtDienThoai.Margin = new System.Windows.Forms.Padding(4);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(399, 22);
             this.txtDienThoai.TabIndex = 10;
             // 
             // txtMaSoThue
             // 
-            this.txtMaSoThue.Location = new System.Drawing.Point(139, 103);
-            this.txtMaSoThue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaSoThue.Location = new System.Drawing.Point(402, 219);
+            this.txtMaSoThue.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaSoThue.Name = "txtMaSoThue";
             this.txtMaSoThue.Size = new System.Drawing.Size(399, 22);
             this.txtMaSoThue.TabIndex = 11;
             // 
             // txtSoTaiKhoan
             // 
-            this.txtSoTaiKhoan.Location = new System.Drawing.Point(139, 135);
-            this.txtSoTaiKhoan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSoTaiKhoan.Location = new System.Drawing.Point(402, 251);
+            this.txtSoTaiKhoan.Margin = new System.Windows.Forms.Padding(4);
             this.txtSoTaiKhoan.Name = "txtSoTaiKhoan";
             this.txtSoTaiKhoan.Size = new System.Drawing.Size(399, 22);
             this.txtSoTaiKhoan.TabIndex = 12;
             // 
             // txtTenNganHang
             // 
-            this.txtTenNganHang.Location = new System.Drawing.Point(139, 167);
-            this.txtTenNganHang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenNganHang.Location = new System.Drawing.Point(402, 283);
+            this.txtTenNganHang.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenNganHang.Name = "txtTenNganHang";
             this.txtTenNganHang.Size = new System.Drawing.Size(399, 22);
             this.txtTenNganHang.TabIndex = 13;
             // 
             // txtFontChu
             // 
-            this.txtFontChu.Location = new System.Drawing.Point(139, 199);
-            this.txtFontChu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFontChu.Location = new System.Drawing.Point(402, 315);
+            this.txtFontChu.Margin = new System.Windows.Forms.Padding(4);
             this.txtFontChu.Name = "txtFontChu";
             this.txtFontChu.Size = new System.Drawing.Size(185, 22);
             this.txtFontChu.TabIndex = 14;
@@ -195,8 +195,8 @@
             // 
             // txtSize
             // 
-            this.txtSize.Location = new System.Drawing.Point(377, 199);
-            this.txtSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSize.Location = new System.Drawing.Point(640, 315);
+            this.txtSize.Margin = new System.Windows.Forms.Padding(4);
             this.txtSize.Name = "txtSize";
             this.txtSize.Size = new System.Drawing.Size(52, 22);
             this.txtSize.TabIndex = 15;
@@ -206,7 +206,7 @@
             // 
             this.lblThongTinBatBuoc.AutoSize = true;
             this.lblThongTinBatBuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThongTinBatBuoc.Location = new System.Drawing.Point(16, 252);
+            this.lblThongTinBatBuoc.Location = new System.Drawing.Point(279, 368);
             this.lblThongTinBatBuoc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblThongTinBatBuoc.Name = "lblThongTinBatBuoc";
             this.lblThongTinBatBuoc.Size = new System.Drawing.Size(220, 17);
@@ -217,7 +217,7 @@
             // 
             this.btnDong.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_close_24;
             this.btnDong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDong.Location = new System.Drawing.Point(440, 246);
+            this.btnDong.Location = new System.Drawing.Point(703, 362);
             this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(100, 28);
@@ -229,7 +229,7 @@
             // 
             this.btnLuu.Image = global::PMQuanLyCuaHangLapTopV10.Properties.Resources.icons8_save_as_25;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(331, 246);
+            this.btnLuu.Location = new System.Drawing.Point(594, 362);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(100, 28);
@@ -241,7 +241,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 312);
+            this.ClientSize = new System.Drawing.Size(1101, 704);
             this.Controls.Add(this.lblThongTinBatBuoc);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.btnLuu);
@@ -261,7 +261,7 @@
             this.Controls.Add(this.lblDienThoai);
             this.Controls.Add(this.lblDiaChi);
             this.Controls.Add(this.lblTenCongTy);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmCauHinhHT";
             this.Text = "THÔNG TIN CÔNG TY";

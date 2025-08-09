@@ -188,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 400);
+            this.ClientSize = new System.Drawing.Size(466, 400);
             this.Controls.Add(this.cbQuyenHan);
             this.Controls.Add(this.labelHoTen);
             this.Controls.Add(this.textBoxHoTen);

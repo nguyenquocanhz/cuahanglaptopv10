@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,11 +9,12 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>PMQuanLyCuaHangLapTopV10</RootNamespace>
     <AssemblyName>PMQuanLyCuaHangLapTopV10</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,16 +29,22 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,21 +59,42 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>PMQuanLyCuaHangLapTopV10.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>D:\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
-    <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
-      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.7\lib\net461\Guna.UI2.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=8.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.8.0.5\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.8.0.0\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Faker.Net.4.8, Version=2.0.163.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Faker.Net.2.0.163\lib\net48\Faker.Net.4.8.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=9.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -76,8 +105,21 @@
     <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Xml, Version=8.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Xml.8.0.2\lib\net462\System.Security.Cryptography.Xml.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -104,6 +146,18 @@
     <Compile Include="DatabaseHelpers\DBconnection.cs" />
     <Compile Include="DatabaseHelpers\DbHelpers.cs" />
     <Compile Include="DatabaseHelpers\SessionManager.cs" />
+    <Compile Include="frmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdmin.Designer.cs">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBanHang.Designer.cs">
+      <DependentUpon>frmBanHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBaoHanh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +169,24 @@
     </Compile>
     <Compile Include="frmCauHinhHT.Designer.cs">
       <DependentUpon>frmCauHinhHT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChiTietHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChiTietHoaDon.Designer.cs">
+      <DependentUpon>frmChiTietHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChiTietNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChiTietNhapHang.Designer.cs">
+      <DependentUpon>frmChiTietNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDashboardEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDashboardEmployee.Designer.cs">
+      <DependentUpon>frmDashboardEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="frmHoaDon.cs">
       <SubType>Form</SubType>
@@ -158,6 +230,30 @@
     <Compile Include="frmNhanVien.Designer.cs">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhapHang.Designer.cs">
+      <DependentUpon>frmNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhieuBaoHanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuBaoHanh.Designer.cs">
+      <DependentUpon>frmPhieuBaoHanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhieuNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuNhapHang.Designer.cs">
+      <DependentUpon>frmPhieuNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhieuNhapHang2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhieuNhapHang2.Designer.cs">
+      <DependentUpon>frmPhieuNhapHang2.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQMK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,20 +266,61 @@
     <Compile Include="frmSanPham.Designer.cs">
       <DependentUpon>frmSanPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmThanhToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThanhToan.Designer.cs">
+      <DependentUpon>frmThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThemHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemHoaDon.Designer.cs">
+      <DependentUpon>frmThemHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThemKhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemKhuyenMai.Designer.cs">
+      <DependentUpon>frmThemKhuyenMai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThemPhieuBaoHanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemPhieuBaoHanh.Designer.cs">
+      <DependentUpon>frmThemPhieuBaoHanh.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmThongKeDoanhSo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmThongKeDoanhSo.Designer.cs">
       <DependentUpon>frmThongKeDoanhSo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmXemTT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXemTT.Designer.cs">
+      <DependentUpon>frmXemTT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Models\ChiTietHD.cs" />
+    <Compile Include="Models\ChiTiethdDAO.cs" />
+    <Compile Include="Models\ChiTietPhieuNhapHang.cs" />
+    <Compile Include="Models\ChiTietPNDAO.cs" />
+    <Compile Include="Models\DoanhThu.cs" />
+    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\HoaDonDAO.cs" />
+    <Compile Include="Models\infoPhieuNhapHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\KhachHangDAO.cs" />
+    <Compile Include="Models\KhuyenMai.cs" />
+    <Compile Include="Models\KhuyenMaiDAO.cs" />
     <Compile Include="Models\NhaCungCap.cs" />
     <Compile Include="Models\NhaCungCapDAO.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\NhanVienDAO.cs" />
+    <Compile Include="Models\PhieuNhapDAO.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\SanPhamDAO.cs" />
     <Compile Include="Program.cs" />
@@ -195,8 +332,21 @@
       <DependentUpon>setupTaiKhoanQuanTri.cs</DependentUpon>
     </Compile>
     <Compile Include="telegramServices.cs" />
+    <Compile Include="ThemeColor.cs" />
+    <Compile Include="ucAddItemDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucAddItemDetail.Designer.cs">
+      <DependentUpon>ucAddItemDetail.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBanHang.resx">
+      <DependentUpon>frmBanHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBaoHanh.resx">
       <DependentUpon>frmBaoHanh.cs</DependentUpon>
@@ -204,11 +354,23 @@
     <EmbeddedResource Include="frmCauHinhHT.resx">
       <DependentUpon>frmCauHinhHT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmChiTietHoaDon.resx">
+      <DependentUpon>frmChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChiTietNhapHang.resx">
+      <DependentUpon>frmChiTietNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDashboardEmployee.resx">
+      <DependentUpon>frmDashboardEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmHoaDon.resx">
       <DependentUpon>frmHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKhuyenMai.resx">
+      <DependentUpon>frmKhuyenMai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -222,14 +384,41 @@
     <EmbeddedResource Include="frmNhanVien.resx">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNhapHang.resx">
+      <DependentUpon>frmNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuBaoHanh.resx">
+      <DependentUpon>frmPhieuBaoHanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuNhapHang.resx">
+      <DependentUpon>frmPhieuNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhieuNhapHang2.resx">
+      <DependentUpon>frmPhieuNhapHang2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQMK.resx">
       <DependentUpon>frmQMK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSanPham.resx">
       <DependentUpon>frmSanPham.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmThanhToan.resx">
+      <DependentUpon>frmThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemHoaDon.resx">
+      <DependentUpon>frmThemHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemKhuyenMai.resx">
+      <DependentUpon>frmThemKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemPhieuBaoHanh.resx">
+      <DependentUpon>frmThemPhieuBaoHanh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmThongKeDoanhSo.resx">
       <DependentUpon>frmThongKeDoanhSo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXemTT.resx">
+      <DependentUpon>frmXemTT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -243,6 +432,9 @@
     </Compile>
     <EmbeddedResource Include="setupTaiKhoanQuanTri.resx">
       <DependentUpon>setupTaiKhoanQuanTri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucAddItemDetail.resx">
+      <DependentUpon>ucAddItemDetail.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -346,9 +538,25 @@
     <None Include="Resources\delete %281%29.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\QR_Code.png" />
     <None Include="Resources\icons8-save-as-64.png" />
     <None Include="Resources\icons8-save-as-25.png" />
     <None Include="Resources\icons8-close-24.png" />
+    <None Include="Resources\icons8-cart-80.png" />
+    <None Include="Resources\icons8-cart-50.png" />
+    <None Include="Resources\icons8-box-50.png" />
+    <None Include="Resources\icons8-customer-insights-manager-50.png" />
+    <None Include="Resources\icons8-bar-graph-50.png" />
+    <None Include="Resources\icons8-settings-50.png" />
+    <None Include="Resources\icons8-discount-50.png" />
+    <None Include="Resources\icons8-discount-50 %281%29.png" />
+    <None Include="Resources\antechz_pro-removebg-preview.png" />
+    <None Include="Resources\1-removebg-preview.png" />
+    <None Include="Resources\icons8-employee-management-50.png" />
+    <None Include="Resources\icons8-create-50.png" />
+    <None Include="Resources\icons8-create-order-50.png" />
+    <None Include="Resources\icons8-supply-chain-management-50.png" />
+    <None Include="Resources\AnTechZ Software.jpg" />
     <Content Include="Resources\ic_close.svg" />
     <Content Include="Resources\ic_saveas.svg" />
     <None Include="Resources\icons8-spanner-25.png" />
@@ -382,5 +590,16 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>

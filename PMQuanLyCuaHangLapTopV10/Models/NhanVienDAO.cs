@@ -20,7 +20,7 @@ namespace PMQuanLyCuaHangLapTopV10.Models
         {
             using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
             {
-                string query = "SELECT hoTenNV, soDienThoai, password, quyenHan, chucDanh FROM NhanVien " +
+                string query = "SELECT * FROM NhanVien " +
                                "WHERE soDienThoai = @SoDienThoai AND password = @Password";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@SoDienThoai", soDienThoai);
@@ -107,18 +107,112 @@ namespace PMQuanLyCuaHangLapTopV10.Models
 
             return nhanViens; // Return the populated DataTable (or empty if no rows).
         }
+        public NhanVien GetNhanVienBySoDienThoai(string soDienThoai)
+        {
+            NhanVien nv = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DBconnection.strConnection))
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                SELECT *
+                FROM NhanVien
+                WHERE soDienThoai = @SoDienThoai";
 
+                    cmd.Parameters.Add("@SoDienThoai", SqlDbType.VarChar).Value = soDienThoai;
 
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            nv = new NhanVien();
+
+                            nv.MaNV = reader.GetInt32(reader.GetOrdinal("MaNV")).ToString();
+                            nv.HoTenNV = reader.IsDBNull(reader.GetOrdinal("HoTenNV")) ? null : reader.GetString(reader.GetOrdinal("HoTenNV"));
+                            nv.GioiTinh = reader.IsDBNull(reader.GetOrdinal("gioiTinh")) ? null : reader.GetString(reader.GetOrdinal("gioiTinh"));
+                            nv.NgaySinh = reader.IsDBNull(reader.GetOrdinal("ngaySinh")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("ngaySinh"));
+                            nv.SoDienThoai = reader.IsDBNull(reader.GetOrdinal("soDienThoai")) ? null : reader.GetString(reader.GetOrdinal("soDienThoai"));
+                            nv.Password = reader.IsDBNull(reader.GetOrdinal("password")) ? null : reader.GetString(reader.GetOrdinal("password"));
+                            nv.QuyenHan = reader.IsDBNull(reader.GetOrdinal("quyenHan")) ? null : reader.GetString(reader.GetOrdinal("quyenHan"));
+                            nv.ChucDanh = reader.IsDBNull(reader.GetOrdinal("chucDanh")) ? null : reader.GetString(reader.GetOrdinal("chucDanh"));
+                            nv.DiaChiNV = reader.IsDBNull(reader.GetOrdinal("DiaChiNV")) ? null : reader.GetString(reader.GetOrdinal("DiaChiNV"));
+                            nv.CCCD = reader.IsDBNull(reader.GetOrdinal("cccd")) ? null : reader.GetString(reader.GetOrdinal("cccd"));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi lấy thông tin nhân viên theo số điện thoại: {ex.Message}");
+            }
+
+            return nv; // Trả về null nếu không tìm thấy
+        }
+
+        // Sửa parameter đầu vào sang int
+        public NhanVien GetNhanVienById(string maNhanVien)
+        {
+            NhanVien nv = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DBconnection.strConnection))
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT MaNV, HoTenNV, GioiTinh, NgaySinh, SoDienThoai, 
+                                    Password, QuyenHan, ChucDanh, DiaChiNV, CCCD
+                                    FROM NhanVien
+                                    WHERE MaNV = @manv";
+
+                    // Add parameter using the correct data type (string)
+                    cmd.Parameters.Add("@manv", SqlDbType.NVarChar).Value = maNhanVien;
+
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Convert NgaySinh properly
+                            DateTime? ngaySinh = null;
+                            if (!reader.IsDBNull(reader.GetOrdinal("ngaySinh")))
+                            {
+                                ngaySinh = reader.GetDateTime(reader.GetOrdinal("ngaySinh"));
+                            }
+
+                            nv = new NhanVien(
+                                reader["MaNV"].ToString(),
+                                reader["hoTenNV"].ToString(),
+                                reader["gioiTinh"].ToString(),
+                                ngaySinh,
+                                reader["soDienThoai"].ToString(),
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            );
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi lấy thông tin nhân viên theo ID: {ex.Message}");
+                nv = null;
+            }
+            return nv;
+        }
+    
         // Phương thức thêm nhân viên mới
         public bool AddNhanVien(NhanVien nhanVien)
         {
             using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
             {
-                string query = "INSERT INTO NhanVien (maNV, hoTenNV, gioiTinh, ngaySinh, soDienThoai, password, quyenHan, chucDanh, diaChiNV , cccd) " +
-                               "VALUES (@MaNV, @HoTenNV, @GioiTinh, @NgaySinh, @SoDienThoai, @Password, @QuyenHan, @ChucDanh, @DiaChiNV , @CCCD)";
+                string query = "INSERT INTO NhanVien (hoTenNV, gioiTinh, ngaySinh, soDienThoai, password, quyenHan, chucDanh, diaChiNV , cccd) " +
+                               "VALUES (@HoTenNV, @GioiTinh, @NgaySinh, @SoDienThoai, @Password, @QuyenHan, @ChucDanh, @DiaChiNV , @CCCD)";
                 SqlCommand command = new SqlCommand(query, connection);
 
-                command.Parameters.AddWithValue("@MaNV", nhanVien.MaNV);
                 command.Parameters.AddWithValue("@HoTenNV", nhanVien.HoTenNV);
                 command.Parameters.AddWithValue("@GioiTinh", nhanVien.GioiTinh);
                 command.Parameters.AddWithValue("@NgaySinh", nhanVien.NgaySinh ?? (object)DBNull.Value);
@@ -291,11 +385,11 @@ namespace PMQuanLyCuaHangLapTopV10.Models
                 using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
                 {
                     string query = "UPDATE NhanVien SET password = @Password " +
-                                   "WHERE maNV = @MaNV";
+                                   "WHERE soDienThoai = @soDienThoai";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@MaNV", username);
+                        command.Parameters.AddWithValue("@soDienThoai", username);
                         command.Parameters.AddWithValue("@Password", newpass);
 
                         connection.Open();
@@ -319,16 +413,41 @@ namespace PMQuanLyCuaHangLapTopV10.Models
         }
 
         // Phương thức xóa nhân viên
-        public void DeleteNhanVien(string maNV)
+        public bool DeleteNhanVien(string maNV)
         {
-            using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
+            int rowsAffected = 0; // Biến để lưu số lượng dòng bị ảnh hưởng
+            try
             {
-                string query = "DELETE FROM NhanVien WHERE maNV = @MaNV";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MaNV", maNV);
+                using (SqlConnection connection = new SqlConnection(DBconnection.strConnection))
+                {
+                    string query = "DELETE FROM NhanVien WHERE maNV = @MaNV";
+                    using (SqlCommand command = new SqlCommand(query, connection)) // Cũng nên dùng using cho SqlCommand
+                    {
+                        // Sử dụng Add thay vì AddWithValue để chỉ định rõ kiểu dữ liệu, tốt hơn cho hiệu suất và tránh lỗi tiềm ẩn
+                        command.Parameters.Add("@MaNV", System.Data.SqlDbType.VarChar).Value = maNV;
+                        // Hoặc nếu maNV là kiểu khác (ví dụ: NVarChar, Int), hãy thay đổi SqlDbType tương ứng
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery(); // Thực thi lệnh và lấy số dòng bị ảnh hưởng
+                    } // SqlCommand được giải phóng tại đây
+                } // SqlConnection được giải phóng tại đây
+
+                // Trả về true nếu có ít nhất một dòng bị xóa, ngược lại trả về false
+                return rowsAffected > 0;
+            }
+            catch (SqlException ex)
+            {
+                // Xử lý lỗi SQL cụ thể (ví dụ: log lỗi)
+                Console.WriteLine("SQL Error deleting NhanVien: " + ex.Message);
+                // Xem xét việc log chi tiết lỗi tại đây (sử dụng một thư viện logging)
+                return false; // Trả về false khi có lỗi SQL
+            }
+            catch (Exception ex)
+            {
+                // Xử lý các lỗi chung khác (ví dụ: lỗi kết nối)
+                Console.WriteLine("General Error deleting NhanVien: " + ex.Message);
+                // Xem xét việc log chi tiết lỗi tại đây
+                return false; // Trả về false khi có lỗi chung
             }
         }
     }

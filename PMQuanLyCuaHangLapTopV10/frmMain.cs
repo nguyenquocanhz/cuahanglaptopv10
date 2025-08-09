@@ -43,7 +43,7 @@ namespace PMQuanLyCuaHangLapTopV10
             if (!string.IsNullOrEmpty(SessionManager.Username))
             {
                 label2.Text = "Xin chào : " + SessionManager.Username;
-                label3.Text = "Chức vụ : " + SessionManager.Role;
+                label1.Text = "Thời gian : " + DateTime.UtcNow;
 
             }
             else
@@ -124,12 +124,7 @@ namespace PMQuanLyCuaHangLapTopV10
 
         private void btnLogout_Click_1(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (dialogResult == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
         }
 
         private void frmSanPham_Click(object sender, EventArgs e)
@@ -154,6 +149,21 @@ namespace PMQuanLyCuaHangLapTopV10
         {
             frmThongKeDoanhSo frmThongKeDoanhSo = new frmThongKeDoanhSo();
             frmThongKeDoanhSo.ShowDialog();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stripLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

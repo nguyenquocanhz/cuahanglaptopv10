@@ -64,8 +64,8 @@ namespace PMQuanLyCuaHangLapTopV10
                     dgvListNhanVien.Columns["NgaySinh"].HeaderText = "Ngày Sinh";
                 if (dgvListNhanVien.Columns.Contains("SoDienThoai"))
                     dgvListNhanVien.Columns["SoDienThoai"].HeaderText = "Số Điện Thoại";
-                //if (dataGridView1.Columns.Contains("Password"))
-                //    dataGridView1.Columns["Password"].HeaderText = "Mật Khẩu";
+                if (dgvListNhanVien.Columns.Contains("Password"))
+                    dgvListNhanVien.Columns["Password"].HeaderText = "Mật Khẩu";
                 if (dgvListNhanVien.Columns.Contains("QuyenHan"))
                     dgvListNhanVien.Columns["QuyenHan"].HeaderText = "Quyền Hạn";
                 if (dgvListNhanVien.Columns.Contains("ChucDanh"))
@@ -112,12 +112,12 @@ namespace PMQuanLyCuaHangLapTopV10
             {
                 MaNV = txtMaNV.Text.Trim(),
                 HoTenNV = txtHoTenNV.Text.Trim(),
-                GioiTinh = txtGioiTinh.SelectedItem?.ToString(), // ComboBox (nếu dùng)
-                NgaySinh = txtNgaySinh.Value.Date, // DateTimePicker (nếu dùng)
+                GioiTinh = cbGioitinh.SelectedItem?.ToString(), // ComboBox (nếu dùng)
+                NgaySinh = dpNgaySinh.Value.Date, // DateTimePicker (nếu dùng)
                 SoDienThoai = txtSoDienThoai.Text.Trim(),
                 Password = txtPwd.Text.Trim(),
-                QuyenHan = txtQuyenHan.Text.Trim(),
-                ChucDanh = txtChucDanh.Text.Trim(),
+                QuyenHan = cbQuyenhan.Text.Trim(),
+                ChucDanh = cbChucVu.Text.Trim(),
                 DiaChiNV = txtDiaChi.Text.Trim(),
                 CCCD = txtCCCD.Text.Trim()
             };
@@ -166,12 +166,12 @@ namespace PMQuanLyCuaHangLapTopV10
             }
             DataGridViewRow row = dgvListNhanVien.SelectedRows[0];
             txtMaNV.Text = row.Cells["MaNV"].Value?.ToString();
-            txtHoTenNV.Text = row.Cells["HoTenNV"].Value.ToString();
-            txtGioiTinh.DisplayMember = row.Cells["GioiTinh"].Value.ToString();
-            txtNgaySinh.Text = row.Cells["NgaySinh"].Value.ToString();
+            txtHoTenNV.Text = row.Cells["hoTenNV"].Value.ToString();
+            cbGioitinh.DisplayMember = row.Cells["GioiTinh"].Value.ToString();
+            dpNgaySinh.Text = row.Cells["NgaySinh"].Value.ToString();
             txtSoDienThoai.Text = row.Cells["SoDienThoai"].Value.ToString();
-            txtQuyenHan.Text = row.Cells["QuyenHan"].Value.ToString();
-            txtChucDanh.Text = row.Cells["ChucDanh"].Value.ToString();
+            cbQuyenhan.Text = row.Cells["QuyenHan"].Value.ToString();
+            cbChucVu.Text = row.Cells["ChucDanh"].Value.ToString();
             txtDiaChi.Text = row.Cells["DiaChiNV"].Value.ToString();
             txtCCCD.Text = row.Cells["cccd"].Value.ToString();
         }
@@ -183,7 +183,7 @@ namespace PMQuanLyCuaHangLapTopV10
                 MessageBox.Show("Vui lòng nhập tên nhân viên .", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtChucDanh.Text))
+            if (string.IsNullOrWhiteSpace(cbChucVu.Text))
             {
                 MessageBox.Show("Vui lòng nhập chức danh.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -193,12 +193,12 @@ namespace PMQuanLyCuaHangLapTopV10
                 MessageBox.Show("Vui lòng nhập địa chỉ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtGioiTinh.Text))
+            if (string.IsNullOrWhiteSpace(cbGioitinh.Text))
             {
                 MessageBox.Show("Vui lòng chọn giới tính.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtNgaySinh.Text))
+            if (string.IsNullOrWhiteSpace(dpNgaySinh.Text))
             {
                 MessageBox.Show("Vui lòng chọn ngày sinh.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -213,7 +213,7 @@ namespace PMQuanLyCuaHangLapTopV10
                 MessageBox.Show("Vui lòng nhập số CCCD.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtQuyenHan.Text))
+            if (string.IsNullOrWhiteSpace(cbQuyenhan.Text))
             {
                 MessageBox.Show("Vui lòng nhập quyền hạn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -223,28 +223,144 @@ namespace PMQuanLyCuaHangLapTopV10
                 MessageBox.Show("Vui lòng nhập mật khẩu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            // check số điện thoại đã tồn tại chưa
+            if (nhanVienDAO.CheckPhoneNumberExists(txtSoDienThoai.Text.Trim()))
+            {
+                MessageBox.Show("Số điện thoại đã tồn tại trong hệ thống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             NhanVien nhanVien = new NhanVien
             {
                 HoTenNV = txtHoTenNV.Text.Trim(),
-                GioiTinh = txtGioiTinh.SelectedItem?.ToString(),
-                NgaySinh = txtNgaySinh.Value.Date,
+                GioiTinh = cbGioitinh.SelectedItem?.ToString(),
+                NgaySinh = dpNgaySinh.Value.Date,
                 SoDienThoai = txtSoDienThoai.Text.Trim(),
                 Password = txtPwd.Text.Trim(),
-                QuyenHan = txtQuyenHan.Text.Trim(),
-                ChucDanh = txtChucDanh.Text.Trim(),
+                QuyenHan = cbQuyenhan.Text.Trim(),
+                ChucDanh = cbChucVu.Text.Trim(),
                 DiaChiNV = txtDiaChi.Text.Trim(),
                 CCCD = txtCCCD.Text.Trim()
             };
-            bool isAddCmd = nhanVienDAO.AddNhanVien(nhanVien);
-            if (isAddCmd)
+            // Gọi phương thức thêm nhân viên
+            try
             {
-                MessageBox.Show("Thêm nhân viên thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ReloadData();
+                bool isAddCmd = nhanVienDAO.AddNhanVien(nhanVien);
+                if (isAddCmd)
+                {
+                    MessageBox.Show("Thêm nhân viên thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ReloadData();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm nhân viên thất bại. Vui lòng kiểm tra lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Thêm nhân viên thất bại. Vui lòng kiểm tra lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Đã xảy ra lỗi khi thêm nhân viên: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            
+        }
+
+        private void dgvListNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvListNhanVien.Rows[e.RowIndex];
+                txtMaNV.Text = row.Cells["MaNV"].Value?.ToString();
+                txtHoTenNV.Text = row.Cells["HoTenNV"].Value?.ToString();
+                cbGioitinh.Text = row.Cells["GioiTinh"].Value?.ToString();
+                dpNgaySinh.Text = row.Cells["NgaySinh"].Value?.ToString();
+                
+                txtSoDienThoai.Text = row.Cells["SoDienThoai"].Value?.ToString();
+                cbQuyenhan.Text = row.Cells["QuyenHan"].Value?.ToString();
+                cbChucVu.Text = row.Cells["ChucDanh"].Value?.ToString();
+                txtDiaChi.Text = row.Cells["DiaChiNV"].Value?.ToString();
+                txtCCCD.Text = row.Cells["cccd"].Value?.ToString();
+            }
+        }
+        /// <summary>
+        /// Xóa trắng nội dung của các ô nhập liệu/hiển thị thông tin nhân viên.
+        /// </summary>
+        private void ClearFields()
+        {
+            // Xóa nội dung của từng TextBox
+            txtMaNV.Text = string.Empty;        // Hoặc có thể dùng txtMaNV.Clear();
+            txtHoTenNV.Text = string.Empty;     // Hoặc txtHoTenNV.Clear();
+            cbGioitinh.SelectedIndex = -1;    // Cân nhắc: Nếu đây là ComboBox, dùng: comboBoxGioiTinh.SelectedIndex = -1;
+            dpNgaySinh.Value = DateTime.Now;    // Cân nhắc: Nếu đây là DateTimePicker, dùng: dtpNgaySinh.Value = DateTime.Now; hoặc dtpNgaySinh.Checked = false; (nếu cho phép null)
+            txtSoDienThoai.Text = string.Empty;
+            cbQuyenhan.SelectedIndex =-1;    // Cân nhắc: Nếu đây là ComboBox, dùng: comboBoxQuyenHan.SelectedIndex = -1;
+            cbChucVu.SelectedIndex = -1;   // Cân nhắc: Nếu đây là ComboBox, dùng: comboBoxChucDanh.SelectedIndex = -1;
+            txtDiaChi.Text = string.Empty;
+            txtCCCD.Clear();        // Hoặc txtCCCD.Clear();
+
+            // Tùy chọn: Đặt con trỏ (focus) về ô nhập liệu đầu tiên (ví dụ: Mã NV hoặc Họ tên)
+            // để người dùng có thể bắt đầu nhập mới hoặc chọn một dòng khác.
+            // Ví dụ:
+            // txtMaNV.Focus();
+            // Hoặc nếu mã NV thường không được sửa trực tiếp:
+            txtHoTenNV.Focus();
+
+            // Tùy chọn: Có thể bạn muốn reset trạng thái của các nút (ví dụ: bật nút Thêm, tắt nút Sửa/Xóa)
+            // btnAdd.Enabled = true;
+            // btnUpdate.Enabled = false;
+            // btnDelete.Enabled = false;
+            // txtMaNV.ReadOnly = false; // Cho phép nhập mã nếu là thêm mới
+        }
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            string id = txtMaNV.Text.Trim(); // Lấy mã NV và xóa khoảng trắng dư thừa
+            string name = txtHoTenNV.Text.Trim(); // Lấy tên NV và xóa khoảng trắng dư thừa
+
+            // --- 1. Kiểm tra xem có mã nhân viên để xóa không ---
+            if (string.IsNullOrEmpty(id))
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Dừng lại nếu không có mã NV
+            }
+
+            // --- 2. Hiển thị hộp thoại xác nhận ---
+            // Tạo nội dung câu hỏi, nên bao gồm cả tên (nếu có) và mã để người dùng chắc chắn
+            string confirmationMessage = string.IsNullOrEmpty(name)
+                                            ? $"Bạn có chắc chắn muốn xóa nhân viên có mã '{id}' không?"
+                                            : $"Bạn có chắc chắn muốn xóa nhân viên '{name}' (Mã: {id}) không?";
+
+            DialogResult confirm = MessageBox.Show(
+                confirmationMessage,       // Nội dung câu hỏi
+                "Xác nhận xóa",            // Tiêu đề hộp thoại
+                MessageBoxButtons.YesNo,   // Hiển thị nút Yes và No
+                MessageBoxIcon.Question);  // Hiển thị biểu tượng dấu hỏi
+
+            // --- 3. Kiểm tra kết quả người dùng chọn ---
+            if (confirm == DialogResult.Yes) // Nếu người dùng nhấn Yes
+            {
+                // --- 4. Thực hiện xóa ---
+                bool isDelete = nhanVienDAO.DeleteNhanVien(id); // Gọi phương thức xóa đã sửa đổi
+
+                // --- 5. Thông báo kết quả ---
+                if (isDelete)
+                {
+                    MessageBox.Show($"Đã xóa thành công nhân viên '{name}' (Mã: {id}).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // --- Quan trọng: Thêm hành động sau khi xóa thành công ---
+                    // Ví dụ: Tải lại danh sách nhân viên trên DataGridView
+                    // LoadDataGrid();
+                    // Hoặc xóa trắng các ô nhập liệu
+                    InitDGV();
+                    ClearFields();
+                }
+                else
+                {
+                    MessageBox.Show($"Không thể xóa nhân viên '{name}' (Mã: {id}).\nCó thể mã không tồn tại hoặc đã xảy ra lỗi.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            // else: Người dùng nhấn No, không làm gì cả hoặc có thể thông báo đã hủy
+            // {
+            //     MessageBox.Show("Thao tác xóa đã được hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // }
         }
     }
 }

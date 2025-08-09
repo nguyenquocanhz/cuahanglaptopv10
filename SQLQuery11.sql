@@ -1,0 +1,2 @@
+﻿ALTER TABLE HoaDon
+ADD MaHDHienThi VARCHAR(50);
