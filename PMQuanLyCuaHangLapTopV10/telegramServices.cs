@@ -20,8 +20,8 @@ namespace PMQuanLyCuaHangLapTopV10
         public TelegramServices(string[] data)
         {
             client = new HttpClient();
-            botToken = "7835585703:AAFarZjG1ny9M3F-jEjjr-EI4niD8UmJDCA";
-            chatId = "6967285875";
+            botToken = "{BOT_TOKEN}";
+            chatId = "";
             this.msg = "Vừa có khách hàng gửi phản hồi:\n" +
                        "Nội dung: " + data[1] + "\n" +
                        "From: " + data[0];
